@@ -1,0 +1,1592 @@
+
+ + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
+ + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
+ + +                                                                         + +
+ + +                      ASPEN PLUS CALCULATION HISTORY                     + +
+ + +                                                                         + +
+ + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
+ + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
+
+ ASPEN PLUS IS A TRADEMARK OF           HOTLINE:
+ ASPEN TECHNOLOGY, INC.                 U.S.A. 888/996-7100
+ 781/221-6400                           EUROPE (44) 1189-226555
+
+ PLATFORM: WIN-X64                                       SEPTEMBER 21, 2026  
+ VERSION: 40.0   Build 359                               MONDAY      
+ INSTALLATION:                                           2:26:43 P.M.        
+
+ THIS COPY OF ASPEN PLUS LICENSED TO                                 
+
+
+      ASPEN PLUS (R) IS A PROPRIETARY PRODUCT OF ASPEN TECHNOLOGY, INC.
+      (ASPENTECH), AND MAY BE USED ONLY UNDER AGREEMENT WITH ASPENTECH.
+      RESTRICTED RIGHTS LEGEND:  USE, REPRODUCTION, OR DISCLOSURE BY THE
+      U.S. GOVERNMENT IS SUBJECT TO RESTRICTIONS SET FORTH IN 
+      (i) FAR 52.227-14, Alt. III, (ii) FAR 52.227-19, (iii) DFARS 
+      252.227-7013(c)(1)(ii), or (iv) THE ACCOMPANYING LICENSE AGREEMENT,
+      AS APPLICABLE. FOR PURPOSES OF THE FAR, THIS SOFTWARE SHALL BE DEEMED
+      TO BE "UNPUBLISHED" AND LICENSED WITH DISCLOSURE PROHIBITIONS.
+      CONTRACTOR/SUBCONTRACTOR: ASPEN TECHNOLOGY, INC. 20 CROSBY DRIVE,
+      BEDFORD, MA 01730.
+ *** INPUT SUMMARY ***
+
+ >>CURRENT RUN
+
+   ORIGINAL RUN                           SEPTEMBER 21, 2026  
+   2:26:43 P.M.                           MONDAY      
+   INPUT FILE: _5343vnq.inm
+   RUN ID : _5343vnq
+          1    ;
+          2    ;Input file created by Aspen Plus Rel. 40.0 at 14:26:43 Mon Sep 21, 2026
+          3    ;Directory   Runid _29E9
+          4    ;
+          5
+          6
+          7    DYNAMICS
+          8        DYNAMICS RESULTS=ON
+          9
+         10    IN-UNITS MET PRESSURE=bar TEMPERATURE=C DELTA-T=C PDROP=bar  &
+         11            INVERSE-PRES='1/bar' SHORT-LENGTH=mm
+         12
+         13    DEF-STREAMS CONVEN ALL
+         14
+         15    MODEL-OPTION
+         16
+         17    DATABANKS 'APV140 PURE40' / 'APV140 AQUEOUS' / 'APV140 SOLIDS' &
+         18             / 'APV140 INORGANIC' / 'APESV140 AP-EOS' /  &
+         19            'NISTV140 NIST-TRC' / NOASPENPCD
+         20
+         21    PROP-SOURCES 'APV140 PURE40' / 'APV140 AQUEOUS' /  &
+         22            'APV140 SOLIDS' / 'APV140 INORGANIC' / 'APESV140 AP-EOS' &
+         23             / 'NISTV140 NIST-TRC'
+         24
+         25    COMPONENTS
+         26        WATER H2O /
+         27        HYDROGEN H2 /
+         28        OXYGEN O2 /
+         29        CARBO-01 CO2 /
+         30        CARBO-02 CO /
+         31        N-DOD-01 C12H26
+         32
+         33    HENRY-COMPS HC-1 HYDROGEN CARBO-01 OXYGEN CARBO-02
+         34
+         35    SOLVE
+         36        RUN-MODE MODE=SIM
+         37
+         38    FLOWSHEET
+         39        BLOCK MIXER IN=RW FD S7 OUT=8
+         40        BLOCK SEP IN=2 OUT=TP RW
+         41        BLOCK E-CELL IN=8 OUT=2 PI
+         42        BLOCK B1 IN=S1 S22 OUT=S2
+         43        BLOCK B2 IN=S2 OUT=S20 S12 S11
+         44        BLOCK B3 IN=S4 OUT=S5 S9
+         45        BLOCK B5 IN=S8 OUT=S3 S13 S18 S15
+         46        BLOCK B6 IN=S24 OUT=S14
+         47        BLOCK B8 IN=S20 S28 OUT=S4
+         48        BLOCK B9 IN=S21 OUT=S17
+         49        BLOCK B10 IN=5 OUT=S7 S19
+         50        BLOCK B11 IN=S14 OUT=S16 S21
+         51        BLOCK B12 IN=TP OUT=S22 S23
+         52        BLOCK B13 IN=S17 OUT=S28 S29
+         53        BLOCK B7 IN=S5 OUT=S24 S8 1 S6
+         54
+         55    PROPERTIES NRTL
+         56
+         57    ESTIMATE ALL
+         58        NRTL ALL ALL UNIFAC
+         59
+         60    PROP-DATA HENRY-1
+         61        IN-UNITS MET PRESSURE=bar TEMPERATURE=C DELTA-T=C PDROP=bar  &
+         62            INVERSE-PRES='1/bar' SHORT-LENGTH=mm
+         63        PROP-LIST HENRY
+         64        BPVAL HYDROGEN WATER 180.0660745 -6993.510000 -26.31190000  &
+         65            .0150431000 .8500000000 65.85000000 0.0
+         66        BPVAL HYDROGEN N-DOD-01 7.238974535 0.0 0.0 0.0  &
+         67            25.00000000 25.00000000 0.0
+         68        BPVAL CARBO-01 WATER 159.8650745 -8741.550000 -21.66900000  &
+         69            1.10259000E-3 -.1500000000 79.85000000 0.0
+         70        BPVAL CARBO-01 N-DOD-01 .4482745350 -589.3900150 1.035400000  &
+         71            0.0 10.00000000 50.00000000 0.0
+         72        BPVAL OXYGEN WATER 144.4080745 -7775.060000 -18.39740000  &
+         73            -9.4435400E-3 .8500000000 74.85000000 0.0
+         74        BPVAL OXYGEN N-DOD-01 12.50907354 -1850.199951 0.0 0.0  &
+         75            25.00000000 40.00000000 0.0
+         76        BPVAL CARBO-02 WATER 171.7750745 -8296.750000 -23.33720000  &
+         77            0.0 -.1500000000 79.85000000 0.0
+         78        BPVAL CARBO-02 N-DOD-01 6.484474535 0.0 0.0 0.0  &
+         79            25.00000000 25.00000000 0.0
+         80
+         81    PROP-DATA NRTL-1
+         82        IN-UNITS MET PRESSURE=bar TEMPERATURE=C DELTA-T=C PDROP=bar  &
+         83            INVERSE-PRES='1/bar' SHORT-LENGTH=mm
+         84        PROP-LIST NRTL
+         85        BPVAL WATER HYDROGEN 0.0 0.0 .3000000 0.0 0.0 0.0 0  &
+         86            726.850000
+         87        BPVAL HYDROGEN WATER 0.0 0.0 .3000000 0.0 0.0 0.0 0  &
+         88            726.850000
+         89        BPVAL WATER OXYGEN 0.0 0.0 .3000000 0.0 0.0 0.0 0  &
+         90            726.850000
+         91        BPVAL OXYGEN WATER 0.0 0.0 .3000000 0.0 0.0 0.0 0  &
+         92            726.850000
+         93        BPVAL WATER CARBO-01 0.0 0.0 .3000000 0.0 0.0 0.0 0  &
+         94            726.850000
+         95        BPVAL CARBO-01 WATER 0.0 0.0 .3000000 0.0 0.0 0.0 0  &
+         96            726.850000
+         97        BPVAL WATER CARBO-02 0.0 0.0 .3000000 0.0 0.0 0.0 0  &
+         98            726.850000
+         99        BPVAL CARBO-02 WATER 0.0 0.0 .3000000 0.0 0.0 0.0 0  &
+        100            726.850000
+        101        BPVAL WATER N-DOD-01 0.0 4542.63361 .3000000 0.0 0.0 0.0  &
+        102            0 726.850000
+        103        BPVAL N-DOD-01 WATER 0.0 1980.57346 .3000000 0.0 0.0 0.0  &
+        104            0 726.850000
+        105        BPVAL HYDROGEN OXYGEN 0.0 0.0 .3000000 0.0 0.0 0.0 0  &
+        106            726.850000
+        107        BPVAL OXYGEN HYDROGEN 0.0 0.0 .3000000 0.0 0.0 0.0 0  &
+        108            726.850000
+        109        BPVAL HYDROGEN CARBO-01 0.0 0.0 .3000000 0.0 0.0 0.0 0  &
+        110            726.850000
+        111        BPVAL CARBO-01 HYDROGEN 0.0 0.0 .3000000 0.0 0.0 0.0 0  &
+        112            726.850000
+        113        BPVAL HYDROGEN CARBO-02 0.0 0.0 .3000000 0.0 0.0 0.0 0  &
+        114            726.850000
+        115        BPVAL CARBO-02 HYDROGEN 0.0 0.0 .3000000 0.0 0.0 0.0 0  &
+        116            726.850000
+        117        BPVAL HYDROGEN N-DOD-01 0.0 0.0 .3000000 0.0 0.0 0.0 0  &
+        118            726.850000
+        119        BPVAL N-DOD-01 HYDROGEN 0.0 0.0 .3000000 0.0 0.0 0.0 0  &
+        120            726.850000
+        121        BPVAL OXYGEN CARBO-01 0.0 0.0 .3000000 0.0 0.0 0.0 0  &
+        122            726.850000
+        123        BPVAL CARBO-01 OXYGEN 0.0 0.0 .3000000 0.0 0.0 0.0 0  &
+        124            726.850000
+        125        BPVAL OXYGEN CARBO-02 0.0 0.0 .3000000 0.0 0.0 0.0 0  &
+        126            726.850000
+        127        BPVAL CARBO-02 OXYGEN 0.0 0.0 .3000000 0.0 0.0 0.0 0  &
+        128            726.850000
+        129        BPVAL OXYGEN N-DOD-01 0.0 0.0 .3000000 0.0 0.0 0.0 0  &
+        130            726.850000
+        131        BPVAL N-DOD-01 OXYGEN 0.0 0.0 .3000000 0.0 0.0 0.0 0  &
+        132            726.850000
+        133        BPVAL CARBO-01 CARBO-02 0.0 0.0 .3000000 0.0 0.0 0.0 0  &
+        134            726.850000
+        135        BPVAL CARBO-02 CARBO-01 0.0 0.0 .3000000 0.0 0.0 0.0 0  &
+        136            726.850000
+        137        BPVAL CARBO-01 N-DOD-01 0.0 0.0 .3000000 0.0 0.0 0.0 0  &
+        138            726.850000
+        139        BPVAL N-DOD-01 CARBO-01 0.0 0.0 .3000000 0.0 0.0 0.0 0  &
+        140            726.850000
+        141        BPVAL CARBO-02 N-DOD-01 0.0 0.0 .3000000 0.0 0.0 0.0 0  &
+        142            726.850000
+        143        BPVAL N-DOD-01 CARBO-02 0.0 0.0 .3000000 0.0 0.0 0.0 0  &
+        144            726.850000
+        145
+        146    STREAM 5
+        147        SUBSTREAM MIXED TEMP=40 PRES=1.8
+        148        MOLE-FLOW WATER 2.13398833 / HYDROGEN 0.00020632151 /  &
+        149            CARBO-01 0.00758473215 / CARBO-02 5.0567686E-05 /  &
+        150            N-DOD-01 1.0446563E-05
+        151
+        152    STREAM FD
+        153        SUBSTREAM MIXED TEMP=70.00000000 PRES=40.00000000  &
+        154            MASS-FLOW=100.
+        155        MASS-FRAC WATER 1.
+        156
+        157    STREAM S1
+        158        SUBSTREAM MIXED TEMP=70.00000000 PRES=40.00000000  &
+        159            MASS-FLOW=100.
+        160        MASS-FRAC CARBO-01 1.
+        161
+        162    STREAM S4
+        163        SUBSTREAM MIXED TEMP=800.0000000 PRES=25.00000000
+        164
+        165    STREAM S7
+        166        SUBSTREAM MIXED TEMP=40.00000000 PRES=1.500000000
+        167        MOLE-FLOW WATER 3.143520000
+        168
+        169    DEF-STREAMS HEAT PI
+        170
+        171    DEF-STREAMS HEAT S6
+        172
+        173    DEF-STREAMS HEAT S9
+        174
+        175    DEF-STREAMS HEAT S11
+        176
+        177    DEF-STREAMS HEAT S15
+        178
+        179    DEF-STREAMS HEAT S18
+        180
+        181    DEF-STREAMS HEAT S19
+        182
+        183    BLOCK B1 MIXER
+        184        PARAM
+        185
+        186    BLOCK B6 MIXER
+        187        PARAM NPHASE=3
+        188        BLOCK-OPTION FREE-WATER=NO
+        189
+        190    BLOCK B8 MIXER
+        191        PARAM PRES=25.00000000 NPHASE=3
+        192        BLOCK-OPTION FREE-WATER=NO
+        193
+        194    BLOCK MIXER MIXER
+        195        PARAM
+        196
+        197    BLOCK B13 FSPLIT
+        198        FRAC S29 0.1
+        199
+        200    BLOCK B11 SEP
+        201        PARAM NPHASE=3
+        202        FRAC STREAM=S16 SUBSTREAM=MIXED COMPS=WATER HYDROGEN  &
+        203            OXYGEN CARBO-01 CARBO-02 N-DOD-01 FRACS=1. 0. 0. 0.  &
+        204            0. 0.
+        205        BLOCK-OPTION FREE-WATER=NO
+        206
+        207    BLOCK B12 SEP
+        208        PARAM
+        209        FRAC STREAM=S22 SUBSTREAM=MIXED COMPS=HYDROGEN OXYGEN  &
+        210            FRACS=1. 0.
+        211
+        212    BLOCK B10 HEATER
+        213        PARAM TEMP=70.00000000 PRES=40.00000000 NPHASE=3  &
+        214            DPPARMOPT=NO
+        215        BLOCK-OPTION FREE-WATER=NO
+        216
+        217    BLOCK SEP FLASH2
+        218        PARAM PRES=40.00000000 DUTY=0.0
+        219
+        220    BLOCK B7 FLASH3
+        221        PARAM TEMP=40. PRES=1.8 L2-COMP=WATER
+        222
+        223    BLOCK B5 RADFRAC
+        224        PARAM NSTAGE=30 ALGORITHM=NONIDEAL INIT-OPTION=STANDARD  &
+        225            MAXOL=100 MAXIL=50 LL-METH=EQ-SOLVE MAXIP=50 NPHASE=3  &
+        226            DAMPING=NONE
+        227        COL-CONFIG CONDENSER=PARTIAL-V
+        228        FEEDS S8 4
+        229        PRODUCTS S13 30 L / S3 1 V
+        230        PRODUCTS S15 30 / S18 1
+        231        P-SPEC 1 1.000000000
+        232        COL-SPECS MASS-D=0.001 MASS-RR=1.
+        233        L2-COMPS WATER N-DOD-01
+        234        L2-STAGES 2 30
+        235        BLOCK-OPTION FREE-WATER=NO
+        236
+        237    BLOCK B3 RSTOIC
+        238        PARAM TEMP=220.0000000 PRES=25.00000000 NPHASE=3
+        239        STOIC 1 MIXED CARBO-02 -12. / HYDROGEN -25. / N-DOD-01  &
+        240            1. / WATER 12.
+        241        CONV 1 MIXED CARBO-02 0.8
+        242        BLOCK-OPTION FREE-WATER=NO
+        243
+        244    BLOCK E-CELL RSTOIC
+        245        PARAM TEMP=70.00000000 PRES=40.00000000
+        246        STOIC 1 MIXED WATER -2. / HYDROGEN 2. / OXYGEN 1.
+        247        CONV 1 MIXED WATER 0.5
+        248
+        249    BLOCK B2 REQUIL
+        250        PARAM NREAC=1 TEMP=800.0000000 PRES=25.00000000 NPHASE=2
+        251        STOIC 2 CARBO-01 -1. * / HYDROGEN -1. * / CARBO-02 1.  &
+        252            * / WATER 1. *
+        253        TAPP-SPEC 2 0.0
+        254
+        255    BLOCK B9 COMPR
+        256        PARAM TYPE=ISENTROPIC PRES=25.00000000 NPHASE=3 SB-MAXIT=30  &
+        257            SB-TOL=0.0001
+        258        BLOCK-OPTION FREE-WATER=NO
+        259
+        260    EO-CONV-OPTI
+        261
+        262    CONV-OPTIONS
+        263        PARAM TEAR-METHOD=BROYDEN TOL=1E-05
+        264
+        265    CONVERGENCE MY-SOLVE BROYDEN
+        266        TEAR S28
+        267
+        268    STREAM-REPOR MOLEFLOW
+        269
+        270    PROPERTY-REP PCES
+        271    ;
+        272    ;
+        273    ;
+        274    ;
+        275    ;
+ *** INPUT TRANSLATOR MESSAGES ***
+
+  *** THIS RUN USES THE PROPERTIES ENTERPRISE DATABASE ***
+      SQLLOCALDB.APESV140 : (DATAVERSION - 40.0.0.13)                         
+      SQLLOCALDB.APV140 : (DATAVERSION - 40.0.0.13)                           
+      SQLLOCALDB.FACTV140 : (DATAVERSION - 40.0.0.12)                         
+      SQLLOCALDB.NISTV140 : (DATAVERSION - 40.0.0.12)                         
+
+      INFORMATION                                              (PSTOP1AP.1)     
+      THERE ARE HENRY COMPONENTS DEFINED IN THIS CASE, THE BINARY DATABANK      
+      WILL BE SEARCHED AUTOMATICALLY FOR ANY AVAILABLE HENRY CONSTANTS.         
+
+  *   WARNING IN PHYSICAL PROPERTY SYSTEM                      (PDATAFAP.1)     
+      THE FOLLOWING CONVENTIONAL COMPONENTS WERE NOT IN A DATA BANK.            
+      CHECK DATA BANK NAMES FOR SPELLING.                                       
+      CID       DATA BANK NAME                                                  
+        WATER     H2O                                                           
+        HYDROGEN  H2                                                            
+        OXYGEN    O2                                                            
+        CARBO-01  CO2                                                           
+        CARBO-02  CO                                                            
+        N-DOD-01  C12H26                                                        
+ 
+ 
+
+ PDF updated                                                                      TIME =    123.21
+
+ *** CALCULATION TRACE ***
+
+
+ *** FLOWSHEET ANALYSIS MESSAGES ***
+
+ FLOWSHEET CONNECTIVITY BY STREAMS       
+
+   STREAM     SOURCE     DEST           STREAM     SOURCE     DEST
+   FD         ----       MIXER          S1         ----       B1      
+   5          ----       B10            8          MIXER      E-CELL  
+   TP         SEP        B12            RW         SEP        MIXER   
+   2          E-CELL     SEP            PI         E-CELL     ----    
+   S2         B1         B2             S20        B2         B8      
+   S12        B2         ----           S11        B2         ----    
+   S5         B3         B7             S9         B3         ----    
+   S3         B5         ----           S13        B5         ----    
+   S18        B5         ----           S15        B5         ----    
+   S14        B6         B11            S4         B8         B3      
+   S17        B9         B13            S7         B10        MIXER   
+   S19        B10        ----           S16        B11        ----    
+   S21        B11        B9             S22        B12        B1      
+   S23        B12        ----           S28        B13        B8      
+   S29        B13        ----           S24        B7         B6      
+   S8         B7         B5             1          B7         ----    
+   S6         B7         ----                                         
+
+ FLOWSHEET CONNECTIVITY BY BLOCKS        
+
+   BLOCK        INLETS                         OUTLETS
+   MIXER        RW FD S7                       8                           
+   SEP          2                              TP RW                       
+   E-CELL       8                              2 PI                        
+   B1           S1 S22                         S2                          
+   B2           S2                             S20 S12 S11                 
+   B3           S4                             S5 S9                       
+   B5           S8                             S3 S13 S18 S15              
+   B6           S24                            S14                         
+   B8           S20 S28                        S4                          
+   B9           S21                            S17                         
+   B10          5                              S7 S19                      
+   B11          S14                            S16 S21                     
+   B12          TP                             S22 S23                     
+   B13          S17                            S28 S29                     
+   B7           S5                             S24 S8 1 S6                 
+
+      BLOCK $OLVER01 (METHOD: BROYDEN ) HAS BEEN DEFINED TO CONVERGE
+               STREAMS: 2
+
+      COMPUTATION ORDER FOR THE FLOWSHEET IS:
+      B10 
+      $OLVER01 SEP MIXER E-CELL 
+      (RETURN $OLVER01) 
+      B12 B1 B2 
+      MY-SOLVE B8 B3 B7 B6 B11 B9 B13 
+      (RETURN MY-SOLVE) 
+      B5 
+
+Calculations begin                                                              time      0.05
+
+
+ SIMULATION CALCULATIONS BEGIN                                                    TIME =      0.05
+
+      ENTHALPY CALCULATION FOR INLET STREAM 5 OF BLOCK B10                        TIME =      0.05
+      KODE = 2  NTRIAL =   2  T = 313.1500  P =  180000.      V =  0.00000      Q =  0.00000    
+
+      UOS BLOCK B10      MODEL: HEATER                                            TIME =      0.05
+      KODE = 2  NTRIAL =   7  T = 343.1500  P = 4.000000E+06  V =  0.00000      BETA =  1.00000      Q =  1365.84    
+
+      CONVERGENCE BLOCK $OLVER01  METHOD: BROYDEN                                 TIME =      0.05
+      ITER   0 For Tear Streams: 2
+
+      UOS BLOCK SEP      MODEL: FLASH2                                            TIME =      0.05
+
+  *   WARNING WHILE EXECUTING UNIT OPERATIONS BLOCK: "SEP" (MODEL: "FLASH2")    
+                                                               (UFL01I.1)       
+      ZERO FEED TO THE BLOCK.  BLOCK BYPASSED                                   
+
+      ENTHALPY CALCULATION FOR INLET STREAM FD OF BLOCK MIXER                     TIME =      0.05
+      KODE = 2  NTRIAL =   1  T = 343.1500  P = 4.000000E+06  V =  0.00000      Q =  0.00000    
+
+      UOS BLOCK MIXER    MODEL: MIXER                                             TIME =      0.05
+      NO. TEMP ITER =    6     TEMP =  343.150    
+      KODE = 1  NTRIAL =   2  T = 343.1497  P = 4.000000E+06  V =  0.00000      Q =  0.00000    
+
+      UOS BLOCK E-CELL   MODEL: RSTOIC                                            TIME =      0.05
+      KODE = 2  NTRIAL =   4  T = 343.1500  P = 4.000000E+06  V = 0.599598      Q =  304008.    
+
+      CONVERGENCE BLOCK $OLVER01  METHOD: BROYDEN                                 TIME =      0.05
+      ITER   1 For Tear Streams: 2
+
+      --FLASH TEAR STREAM 2       
+      KODE = 1  NTRIAL =  10  T = 343.1500  P = 4.000000E+06  V = 0.599598      Q =  0.00000    
+
+  LOOP $OLVER01 ITER    1:   7 VARS NOT CONVERGED, MAX ERR/TOL     0.10000E+07    TIME =      0.05
+
+      UOS BLOCK SEP      MODEL: FLASH2                                            TIME =      0.05
+      KODE = 1  NTRIAL =  10  T = 343.1500  P = 4.000000E+06  V = 0.599598      Q =  0.00000    
+
+      UOS BLOCK MIXER    MODEL: MIXER                                             TIME =      0.05
+      NO. TEMP ITER =    6     TEMP =  343.150    
+      KODE = 1  NTRIAL =   2  T = 343.1500  P = 4.000000E+06  V =  0.00000      Q =  0.00000    
+
+      UOS BLOCK E-CELL   MODEL: RSTOIC                                            TIME =      0.05
+      KODE = 2  NTRIAL =   2  T = 343.1500  P = 4.000000E+06  V = 0.600929      Q =  454263.    
+
+      CONVERGENCE BLOCK $OLVER01  METHOD: BROYDEN                                 TIME =      0.05
+      ITER   2 For Tear Streams: 2
+
+      --FLASH TEAR STREAM 2       
+      KODE = 1  NTRIAL =   4  T = 343.1500  P = 4.000000E+06  V = 0.600929      Q =  0.00000    
+
+  LOOP $OLVER01 ITER    2:   8 VARS NOT CONVERGED, MAX ERR/TOL      51669.        TIME =      0.05
+
+      UOS BLOCK SEP      MODEL: FLASH2                                            TIME =      0.05
+      KODE = 1  NTRIAL =   4  T = 343.1500  P = 4.000000E+06  V = 0.600929      Q =  0.00000    
+
+      UOS BLOCK MIXER    MODEL: MIXER                                             TIME =      0.05
+      NO. TEMP ITER =    6     TEMP =  343.150    
+      KODE = 1  NTRIAL =   2  T = 343.1500  P = 4.000000E+06  V =  0.00000      Q =  0.00000    
+
+      UOS BLOCK E-CELL   MODEL: RSTOIC                                            TIME =      0.05
+      KODE = 2  NTRIAL =   2  T = 343.1500  P = 4.000000E+06  V = 0.601313      Q =  528509.    
+
+      CONVERGENCE BLOCK $OLVER01  METHOD: BROYDEN                                 TIME =      0.05
+      ITER   3 For Tear Streams: 2
+
+      --FLASH TEAR STREAM 2       
+      KODE = 1  NTRIAL =   5  T = 343.4801  P = 4.000000E+06  V = 0.601528      Q =  0.00000    
+
+  LOOP $OLVER01 ITER    3:   8 VARS NOT CONVERGED, MAX ERR/TOL      17348.        TIME =      0.05
+
+      UOS BLOCK SEP      MODEL: FLASH2                                            TIME =      0.06
+      KODE = 1  NTRIAL =   5  T = 343.4801  P = 4.000000E+06  V = 0.601528      Q =  0.00000    
+
+      UOS BLOCK MIXER    MODEL: MIXER                                             TIME =      0.06
+      NO. TEMP ITER =    6     TEMP =  343.308    
+      KODE = 1  NTRIAL =   2  T = 343.3078  P = 4.000000E+06  V =  0.00000      Q =  0.00000    
+
+      UOS BLOCK E-CELL   MODEL: RSTOIC                                            TIME =      0.06
+      KODE = 2  NTRIAL =   1  T = 343.1500  P = 4.000000E+06  V = 0.601520      Q =  580994.    
+
+      CONVERGENCE BLOCK $OLVER01  METHOD: BROYDEN                                 TIME =      0.06
+      ITER   4 For Tear Streams: 2
+
+      --FLASH TEAR STREAM 2       
+      KODE = 1  NTRIAL =   5  T = 343.2378  P = 4.000000E+06  V = 0.601593      Q =  0.00000    
+
+  LOOP $OLVER01 ITER    4:   8 VARS NOT CONVERGED, MAX ERR/TOL      3718.6        TIME =      0.06
+
+      UOS BLOCK SEP      MODEL: FLASH2                                            TIME =      0.06
+      KODE = 1  NTRIAL =   5  T = 343.2378  P = 4.000000E+06  V = 0.601593      Q =  0.00000    
+
+      UOS BLOCK MIXER    MODEL: MIXER                                             TIME =      0.06
+      NO. TEMP ITER =    6     TEMP =  343.193    
+      KODE = 1  NTRIAL =   2  T = 343.1933  P = 4.000000E+06  V =  0.00000      Q =  0.00000    
+
+      UOS BLOCK E-CELL   MODEL: RSTOIC                                            TIME =      0.06
+      KODE = 2  NTRIAL =   1  T = 343.1500  P = 4.000000E+06  V = 0.601585      Q =  598375.    
+
+      CONVERGENCE BLOCK $OLVER01  METHOD: BROYDEN                                 TIME =      0.06
+      ITER   5 For Tear Streams: 2
+
+      --FLASH TEAR STREAM 2       
+      KODE = 1  NTRIAL =   4  T = 343.1548  P = 4.000000E+06  V = 0.601595      Q =  0.00000    
+
+  LOOP $OLVER01 ITER    5:   8 VARS NOT CONVERGED, MAX ERR/TOL      924.66        TIME =      0.06
+
+      UOS BLOCK SEP      MODEL: FLASH2                                            TIME =      0.06
+      KODE = 1  NTRIAL =   4  T = 343.1548  P = 4.000000E+06  V = 0.601595      Q =  0.00000    
+
+      UOS BLOCK MIXER    MODEL: MIXER                                             TIME =      0.06
+      NO. TEMP ITER =    6     TEMP =  343.152    
+      KODE = 1  NTRIAL =   2  T = 343.1524  P = 4.000000E+06  V =  0.00000      Q =  0.00000    
+
+      UOS BLOCK E-CELL   MODEL: RSTOIC                                            TIME =      0.06
+      KODE = 2  NTRIAL =   1  T = 343.1500  P = 4.000000E+06  V = 0.601595      Q =  600977.    
+
+      CONVERGENCE BLOCK $OLVER01  METHOD: BROYDEN                                 TIME =      0.06
+      ITER   6 For Tear Streams: 2
+
+      --FLASH TEAR STREAM 2       
+      KODE = 1  NTRIAL =   2  T = 343.1499  P = 4.000000E+06  V = 0.601595      Q =  0.00000    
+
+  LOOP $OLVER01 ITER    6:   6 VARS NOT CONVERGED, MAX ERR/TOL      431.22        TIME =      0.06
+
+      UOS BLOCK SEP      MODEL: FLASH2                                            TIME =      0.06
+      KODE = 1  NTRIAL =   2  T = 343.1499  P = 4.000000E+06  V = 0.601595      Q =  0.00000    
+
+      UOS BLOCK MIXER    MODEL: MIXER                                             TIME =      0.06
+      NO. TEMP ITER =    6     TEMP =  343.150    
+      KODE = 1  NTRIAL =   2  T = 343.1500  P = 4.000000E+06  V =  0.00000      Q =  0.00000    
+
+      UOS BLOCK E-CELL   MODEL: RSTOIC                                            TIME =      0.06
+      KODE = 2  NTRIAL =   1  T = 343.1500  P = 4.000000E+06  V = 0.601595      Q =  601042.    
+
+      CONVERGENCE BLOCK $OLVER01  METHOD: BROYDEN                                 TIME =      0.06
+      ITER   7 For Tear Streams: 2
+
+      --FLASH TEAR STREAM 2       
+      KODE = 1  NTRIAL =   1  T = 343.1500  P = 4.000000E+06  V = 0.601595      Q =  0.00000    
+
+  LOOP $OLVER01 ITER    7:   6 VARS NOT CONVERGED, MAX ERR/TOL      223.93        TIME =      0.06
+
+      UOS BLOCK SEP      MODEL: FLASH2                                            TIME =      0.06
+      KODE = 1  NTRIAL =   1  T = 343.1500  P = 4.000000E+06  V = 0.601595      Q =  0.00000    
+
+      UOS BLOCK MIXER    MODEL: MIXER                                             TIME =      0.06
+      NO. TEMP ITER =    6     TEMP =  343.150    
+      KODE = 1  NTRIAL =   2  T = 343.1500  P = 4.000000E+06  V =  0.00000      Q =  0.00000    
+
+      UOS BLOCK E-CELL   MODEL: RSTOIC                                            TIME =      0.07
+      KODE = 2  NTRIAL =   1  T = 343.1500  P = 4.000000E+06  V = 0.601595      Q =  601034.    
+
+      CONVERGENCE BLOCK $OLVER01  METHOD: BROYDEN                                 TIME =      0.07
+      ITER   8 For Tear Streams: 2
+
+      --FLASH TEAR STREAM 2       
+      KODE = 1  NTRIAL =   1  T = 343.1500  P = 4.000000E+06  V = 0.601595      Q =  0.00000    
+
+  LOOP $OLVER01 ITER    8:   1 VARS NOT CONVERGED, MAX ERR/TOL      122.31        TIME =      0.07
+
+      UOS BLOCK SEP      MODEL: FLASH2                                            TIME =      0.07
+      KODE = 1  NTRIAL =   1  T = 343.1500  P = 4.000000E+06  V = 0.601595      Q =  0.00000    
+
+      UOS BLOCK MIXER    MODEL: MIXER                                             TIME =      0.07
+      NO. TEMP ITER =    6     TEMP =  343.150    
+      KODE = 1  NTRIAL =   2  T = 343.1500  P = 4.000000E+06  V =  0.00000      Q =  0.00000    
+
+      UOS BLOCK E-CELL   MODEL: RSTOIC                                            TIME =      0.07
+      KODE = 2  NTRIAL =   1  T = 343.1500  P = 4.000000E+06  V = 0.601595      Q =  601033.    
+
+      CONVERGENCE BLOCK $OLVER01  METHOD: BROYDEN                                 TIME =      0.07
+      ITER   9 For Tear Streams: 2
+
+      --FLASH TEAR STREAM 2       
+      KODE = 1  NTRIAL =   1  T = 343.1500  P = 4.000000E+06  V = 0.601595      Q =  0.00000    
+
+  LOOP $OLVER01 ITER    9:   1 VARS NOT CONVERGED, MAX ERR/TOL      53.800        TIME =      0.07
+
+      UOS BLOCK SEP      MODEL: FLASH2                                            TIME =      0.07
+      KODE = 1  NTRIAL =   1  T = 343.1500  P = 4.000000E+06  V = 0.601595      Q =  0.00000    
+
+      UOS BLOCK MIXER    MODEL: MIXER                                             TIME =      0.07
+      NO. TEMP ITER =    6     TEMP =  343.150    
+      KODE = 1  NTRIAL =   2  T = 343.1500  P = 4.000000E+06  V =  0.00000      Q =  0.00000    
+
+      UOS BLOCK E-CELL   MODEL: RSTOIC                                            TIME =      0.07
+      KODE = 2  NTRIAL =   1  T = 343.1500  P = 4.000000E+06  V = 0.601595      Q =  601033.    
+
+      CONVERGENCE BLOCK $OLVER01  METHOD: BROYDEN                                 TIME =      0.07
+      ITER  10 For Tear Streams: 2
+
+      --FLASH TEAR STREAM 2       
+      KODE = 1  NTRIAL =   1  T = 343.1500  P = 4.000000E+06  V = 0.601595      Q =  0.00000    
+
+  LOOP $OLVER01 ITER   10:   1 VARS NOT CONVERGED, MAX ERR/TOL      33.821        TIME =      0.07
+
+      UOS BLOCK SEP      MODEL: FLASH2                                            TIME =      0.07
+      KODE = 1  NTRIAL =   1  T = 343.1500  P = 4.000000E+06  V = 0.601595      Q =  0.00000    
+
+      UOS BLOCK MIXER    MODEL: MIXER                                             TIME =      0.07
+      NO. TEMP ITER =    6     TEMP =  343.150    
+      KODE = 1  NTRIAL =   2  T = 343.1500  P = 4.000000E+06  V =  0.00000      Q =  0.00000    
+
+      UOS BLOCK E-CELL   MODEL: RSTOIC                                            TIME =      0.07
+      KODE = 2  NTRIAL =   1  T = 343.1500  P = 4.000000E+06  V = 0.601595      Q =  601033.    
+
+      CONVERGENCE BLOCK $OLVER01  METHOD: BROYDEN                                 TIME =      0.07
+      ITER  11 For Tear Streams: 2
+
+      --FLASH TEAR STREAM 2       
+      KODE = 1  NTRIAL =   1  T = 343.1500  P = 4.000000E+06  V = 0.601595      Q =  0.00000    
+
+  LOOP $OLVER01 ITER   11:   1 VARS NOT CONVERGED, MAX ERR/TOL      12.478        TIME =      0.07
+
+      UOS BLOCK SEP      MODEL: FLASH2                                            TIME =      0.07
+      KODE = 1  NTRIAL =   1  T = 343.1500  P = 4.000000E+06  V = 0.601595      Q =  0.00000    
+
+      UOS BLOCK MIXER    MODEL: MIXER                                             TIME =      0.07
+      NO. TEMP ITER =    6     TEMP =  343.150    
+      KODE = 1  NTRIAL =   2  T = 343.1500  P = 4.000000E+06  V =  0.00000      Q =  0.00000    
+
+      UOS BLOCK E-CELL   MODEL: RSTOIC                                            TIME =      0.07
+      KODE = 2  NTRIAL =   1  T = 343.1500  P = 4.000000E+06  V = 0.601595      Q =  601033.    
+
+      CONVERGENCE BLOCK $OLVER01  METHOD: BROYDEN                                 TIME =      0.07
+      ITER  12 For Tear Streams: 2
+
+      --FLASH TEAR STREAM 2       
+      KODE = 1  NTRIAL =   1  T = 343.1500  P = 4.000000E+06  V = 0.601595      Q =  0.00000    
+
+  LOOP $OLVER01 ITER   12:   1 VARS NOT CONVERGED, MAX ERR/TOL      7.8622        TIME =      0.07
+
+      UOS BLOCK SEP      MODEL: FLASH2                                            TIME =      0.07
+      KODE = 1  NTRIAL =   1  T = 343.1500  P = 4.000000E+06  V = 0.601595      Q =  0.00000    
+
+      UOS BLOCK MIXER    MODEL: MIXER                                             TIME =      0.07
+      NO. TEMP ITER =    6     TEMP =  343.150    
+      KODE = 1  NTRIAL =   2  T = 343.1500  P = 4.000000E+06  V =  0.00000      Q =  0.00000    
+
+      UOS BLOCK E-CELL   MODEL: RSTOIC                                            TIME =      0.08
+      KODE = 2  NTRIAL =   1  T = 343.1500  P = 4.000000E+06  V = 0.601595      Q =  601033.    
+
+      CONVERGENCE BLOCK $OLVER01  METHOD: BROYDEN                                 TIME =      0.08
+      ITER  13 For Tear Streams: 2
+
+      --FLASH TEAR STREAM 2       
+      KODE = 1  NTRIAL =   1  T = 343.1500  P = 4.000000E+06  V = 0.601595      Q =  0.00000    
+
+  LOOP $OLVER01 ITER   13:   1 VARS NOT CONVERGED, MAX ERR/TOL      3.5678        TIME =      0.08
+
+      UOS BLOCK SEP      MODEL: FLASH2                                            TIME =      0.08
+      KODE = 1  NTRIAL =   1  T = 343.1500  P = 4.000000E+06  V = 0.601595      Q =  0.00000    
+
+      UOS BLOCK MIXER    MODEL: MIXER                                             TIME =      0.08
+      NO. TEMP ITER =    6     TEMP =  343.150    
+      KODE = 1  NTRIAL =   2  T = 343.1500  P = 4.000000E+06  V =  0.00000      Q =  0.00000    
+
+      UOS BLOCK E-CELL   MODEL: RSTOIC                                            TIME =      0.08
+      KODE = 2  NTRIAL =   1  T = 343.1500  P = 4.000000E+06  V = 0.601595      Q =  601033.    
+
+      CONVERGENCE BLOCK $OLVER01  METHOD: BROYDEN                                 TIME =      0.08
+      ITER  14 For Tear Streams: 2
+
+      --FLASH TEAR STREAM 2       
+      KODE = 1  NTRIAL =   1  T = 343.1500  P = 4.000000E+06  V = 0.601595      Q =  0.00000    
+
+  LOOP $OLVER01 ITER   14:   1 VARS NOT CONVERGED, MAX ERR/TOL      1.6393        TIME =      0.08
+
+      UOS BLOCK SEP      MODEL: FLASH2                                            TIME =      0.08
+      KODE = 1  NTRIAL =   1  T = 343.1500  P = 4.000000E+06  V = 0.601595      Q =  0.00000    
+
+      UOS BLOCK MIXER    MODEL: MIXER                                             TIME =      0.08
+      NO. TEMP ITER =    6     TEMP =  343.150    
+      KODE = 1  NTRIAL =   2  T = 343.1500  P = 4.000000E+06  V =  0.00000      Q =  0.00000    
+
+      UOS BLOCK E-CELL   MODEL: RSTOIC                                            TIME =      0.08
+      KODE = 2  NTRIAL =   1  T = 343.1500  P = 4.000000E+06  V = 0.601595      Q =  601033.    
+
+      CONVERGENCE BLOCK $OLVER01  METHOD: BROYDEN                                 TIME =      0.08
+      ITER  15 For Tear Streams: 2
+
+  LOOP $OLVER01 ITER   15:     *** CONVERGED *** , MAX ERR/TOL    -0.16206        TIME =      0.08
+
+      UOS BLOCK B12      MODEL: SEP                                               TIME =      0.10
+      ---FLASH OUTLET STREAM S22     :
+      KODE = 2  NTRIAL =   1  T = 343.1500  P = 4.000000E+06  V =  1.00000      Q =  0.00000    
+      ---FLASH OUTLET STREAM S23     :
+      KODE = 2  NTRIAL =   5  T = 343.1500  P = 4.000000E+06  V = 0.984160      Q =  0.00000    
+
+      ENTHALPY CALCULATION FOR INLET STREAM S1 OF BLOCK B1                        TIME =      0.10
+      KODE = 2  NTRIAL =   1  T = 343.1500  P = 4.000000E+06  V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B1       MODEL: MIXER                                             TIME =      0.10
+      NO. TEMP ITER =    5     TEMP =  343.150    
+      KODE = 1  NTRIAL =   2  T = 343.1500  P = 4.000000E+06  V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B2       MODEL: REQUIL                                            TIME =      0.10
+
+      EQUILK CONVERGED IN   8 ITERATIONS.
+      KODE = 2  T =   1073.      P =  0.2500E+07  V =   1.000      Q =  0.8434E+05
+      REACTION EXTENTS (KGMOL/SEC) =   0.4779D-03
+
+      CONVERGENCE BLOCK MY-SOLVE  METHOD: BROYDEN                                 TIME =      0.10
+      ITER   0 For Tear Streams: S28
+
+      UOS BLOCK B8       MODEL: MIXER                                             TIME =      0.10
+      NO. TEMP ITER =    5     TEMP =  1073.15    
+      KODE = 1  NTRIAL =   2  T =1073.1500  P = 2.500000E+06  V =  1.00000      BETA =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B3       MODEL: RSTOIC                                            TIME =      0.10
+      KODE = 2  NTRIAL =   7  T = 493.1500  P = 2.500000E+06  V =  1.00000      BETA =  1.00000      Q = -113493.    
+
+      UOS BLOCK B7       MODEL: FLASH3                                            TIME =      0.10
+      KODE = 2  NTRIAL =   7  T = 313.1500  P =  180000.      V = 0.571029      BETA = 0.962668      Q = -50598.3    
+
+      UOS BLOCK B6       MODEL: MIXER                                             TIME =      0.10
+      KODE = 1  NTRIAL =  16  T = 313.1501  P =  180000.      V =  1.00000      BETA =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B11      MODEL: SEP                                               TIME =      0.10
+      ---FLASH OUTLET STREAM S16     :
+      KODE = 2  NTRIAL =   1  T = 313.1501  P =  180000.      V =  0.00000      Q =  0.00000    
+      ---FLASH OUTLET STREAM S21     :
+      KODE = 2  NTRIAL =   1  T = 313.1501  P =  180000.      V = 0.999987      Q =  0.00000    
+
+      UOS BLOCK B9       MODEL: COMPR                                             TIME =      0.10
+      OUTLET TEMP =   749.1       OUTLET PRES =  0.2500E+07   INDICATED HP =  0.1496E+05   BRAKE HP =  0.1496E+05
+      ISENTR TEMP =   629.9      CALC ISENTR EFF =  0.7200      ISENTR HP =  0.1077E+05  HP =   16.19    
+
+      UOS BLOCK B13      MODEL: FSPLIT                                            TIME =      0.10
+      NO. TEMP ITER =    5     TEMP =  749.107    
+      KODE = 1  NTRIAL =   2  T = 749.1072  P = 2.500000E+06  V =  1.00000      Q =  0.00000    
+      SPLIT FRACTIONS:  0.90000D+00    0.10000D+00
+
+      CONVERGENCE BLOCK MY-SOLVE  METHOD: BROYDEN                                 TIME =      0.10
+      ITER   1 For Tear Streams: S28
+
+      --FLASH TEAR STREAM S28     
+      NO. TEMP ITER =    5     TEMP =  749.107    
+      KODE = 1  NTRIAL =   2  T = 749.1072  P = 2.500000E+06  V =  1.00000      Q =  0.00000    
+
+  LOOP MY-SOLVE ITER    1:   5 VARS NOT CONVERGED, MAX ERR/TOL     0.10000E+07    TIME =      0.10
+
+      UOS BLOCK B8       MODEL: MIXER                                             TIME =      0.10
+      NO. TEMP ITER =    5     TEMP =  989.762    
+      KODE = 1  NTRIAL =   6  T = 989.7624  P = 2.500000E+06  V =  1.00000      BETA =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B3       MODEL: RSTOIC                                            TIME =      0.10
+      KODE = 2  NTRIAL =   7  T = 493.1500  P = 2.500000E+06  V =  1.00000      BETA =  1.00000      Q = -132555.    
+
+      UOS BLOCK B7       MODEL: FLASH3                                            TIME =      0.10
+      KODE = 2  NTRIAL =   5  T = 313.1500  P =  180000.      V = 0.683552      BETA = 4.211227E-02  Q = -57639.6    
+
+      UOS BLOCK B6       MODEL: MIXER                                             TIME =      0.10
+      NO. TEMP ITER =    3     TEMP =  313.150    
+      KODE = 1  NTRIAL =   1  T = 313.1500  P =  180000.      V =  1.00000      BETA =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B11      MODEL: SEP                                               TIME =      0.10
+      ---FLASH OUTLET STREAM S16     :
+      KODE = 2  NTRIAL =   1  T = 313.1500  P =  180000.      V =  0.00000      Q =  0.00000    
+      ---FLASH OUTLET STREAM S21     :
+      KODE = 2  NTRIAL =   1  T = 313.1500  P =  180000.      V = 0.999987      Q =  0.00000    
+
+      UOS BLOCK B9       MODEL: COMPR                                             TIME =      0.10
+      OUTLET TEMP =   745.1       OUTLET PRES =  0.2500E+07   INDICATED HP =  0.2543E+05   BRAKE HP =  0.2543E+05
+      ISENTR TEMP =   627.1      CALC ISENTR EFF =  0.7200      ISENTR HP =  0.1831E+05  HP =   46.90    
+
+      UOS BLOCK B13      MODEL: FSPLIT                                            TIME =      0.10
+      NO. TEMP ITER =    5     TEMP =  745.113    
+      KODE = 1  NTRIAL =   2  T = 745.1126  P = 2.500000E+06  V =  1.00000      Q =  0.00000    
+      SPLIT FRACTIONS:  0.90000D+00    0.10000D+00
+
+      CONVERGENCE BLOCK MY-SOLVE  METHOD: BROYDEN                                 TIME =      0.10
+      ITER   2 For Tear Streams: S28
+
+      --FLASH TEAR STREAM S28     
+      NO. TEMP ITER =    5     TEMP =  745.113    
+      KODE = 1  NTRIAL =   2  T = 745.1126  P = 2.500000E+06  V =  1.00000      Q =  0.00000    
+
+  LOOP MY-SOLVE ITER    2:   6 VARS NOT CONVERGED, MAX ERR/TOL      89742.        TIME =      0.10
+
+      UOS BLOCK B8       MODEL: MIXER                                             TIME =      0.11
+      NO. TEMP ITER =    5     TEMP =  950.708    
+      KODE = 1  NTRIAL =   6  T = 950.7084  P = 2.500000E+06  V =  1.00000      BETA =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B3       MODEL: RSTOIC                                            TIME =      0.11
+      KODE = 2  NTRIAL =   8  T = 493.1500  P = 2.500000E+06  V =  1.00000      BETA =  1.00000      Q = -140080.    
+
+      UOS BLOCK B7       MODEL: FLASH3                                            TIME =      0.11
+      KODE = 2  NTRIAL =   5  T = 313.1500  P =  180000.      V = 0.747805      BETA = 4.399589E-02  Q = -60872.8    
+
+      UOS BLOCK B6       MODEL: MIXER                                             TIME =      0.11
+      KODE = 1  NTRIAL =  17  T = 313.1500  P =  180000.      V =  1.00000      BETA =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B11      MODEL: SEP                                               TIME =      0.11
+      ---FLASH OUTLET STREAM S16     :
+      KODE = 2  NTRIAL =   1  T = 313.1500  P =  180000.      V =  0.00000      Q =  0.00000    
+      ---FLASH OUTLET STREAM S21     :
+      KODE = 2  NTRIAL =   1  T = 313.1500  P =  180000.      V = 0.999987      Q =  0.00000    
+
+      UOS BLOCK B9       MODEL: COMPR                                             TIME =      0.11
+      OUTLET TEMP =   743.0       OUTLET PRES =  0.2500E+07   INDICATED HP =  0.3431E+05   BRAKE HP =  0.3431E+05
+      ISENTR TEMP =   625.6      CALC ISENTR EFF =  0.7200      ISENTR HP =  0.2470E+05  HP =   85.50    
+
+      UOS BLOCK B13      MODEL: FSPLIT                                            TIME =      0.11
+      NO. TEMP ITER =    5     TEMP =  742.993    
+      KODE = 1  NTRIAL =   2  T = 742.9930  P = 2.500000E+06  V =  1.00000      Q =  0.00000    
+      SPLIT FRACTIONS:  0.90000D+00    0.10000D+00
+
+      CONVERGENCE BLOCK MY-SOLVE  METHOD: BROYDEN                                 TIME =      0.11
+      ITER   3 For Tear Streams: S28
+
+      --FLASH TEAR STREAM S28     
+      NO. TEMP ITER =    5     TEMP =  731.330    
+      KODE = 1  NTRIAL =   2  T = 731.3299  P = 2.500000E+06  V =  1.00000      Q =  0.00000    
+
+  LOOP MY-SOLVE ITER    3:   6 VARS NOT CONVERGED, MAX ERR/TOL      42531.        TIME =      0.12
+
+      UOS BLOCK B8       MODEL: MIXER                                             TIME =      0.12
+      NO. TEMP ITER =    5     TEMP =  908.910    
+      KODE = 1  NTRIAL =   6  T = 908.9102  P = 2.500000E+06  V =  1.00000      BETA =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B3       MODEL: RSTOIC                                            TIME =      0.12
+      KODE = 2  NTRIAL =   9  T = 493.1500  P = 2.500000E+06  V =  1.00000      BETA =  1.00000      Q = -146966.    
+
+      UOS BLOCK B7       MODEL: FLASH3                                            TIME =      0.13
+      KODE = 2  NTRIAL =   5  T = 313.1500  P =  180000.      V = 0.807383      BETA = 4.614532E-02  Q = -64518.3    
+
+      UOS BLOCK B6       MODEL: MIXER                                             TIME =      0.13
+      NO. TEMP ITER =    1     TEMP =  313.150    
+      KODE = 1  NTRIAL =   1  T = 313.1500  P =  180000.      V =  1.00000      BETA =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B11      MODEL: SEP                                               TIME =      0.13
+      ---FLASH OUTLET STREAM S16     :
+      KODE = 2  NTRIAL =   1  T = 313.1500  P =  180000.      V =  0.00000      Q =  0.00000    
+      ---FLASH OUTLET STREAM S21     :
+      KODE = 2  NTRIAL =   1  T = 313.1500  P =  180000.      V = 0.999987      Q =  0.00000    
+
+      UOS BLOCK B9       MODEL: COMPR                                             TIME =      0.13
+      OUTLET TEMP =   741.3       OUTLET PRES =  0.2500E+07   INDICATED HP =  0.4656E+05   BRAKE HP =  0.4656E+05
+      ISENTR TEMP =   624.4      CALC ISENTR EFF =  0.7200      ISENTR HP =  0.3352E+05  HP =   157.6    
+
+      UOS BLOCK B13      MODEL: FSPLIT                                            TIME =      0.13
+      NO. TEMP ITER =    5     TEMP =  741.269    
+      KODE = 1  NTRIAL =   2  T = 741.2695  P = 2.500000E+06  V =  1.00000      Q =  0.00000    
+      SPLIT FRACTIONS:  0.90000D+00    0.10000D+00
+
+      CONVERGENCE BLOCK MY-SOLVE  METHOD: BROYDEN                                 TIME =      0.13
+      ITER   4 For Tear Streams: S28
+
+      --FLASH TEAR STREAM S28     
+      NO. TEMP ITER =    5     TEMP =  734.693    
+      KODE = 1  NTRIAL =   2  T = 734.6931  P = 2.500000E+06  V =  1.00000      Q =  0.00000    
+
+  LOOP MY-SOLVE ITER    4:   6 VARS NOT CONVERGED, MAX ERR/TOL      21653.        TIME =      0.13
+
+      UOS BLOCK B8       MODEL: MIXER                                             TIME =      0.13
+      NO. TEMP ITER =    5     TEMP =  888.471    
+      KODE = 1  NTRIAL =   5  T = 888.4710  P = 2.500000E+06  V =  1.00000      BETA =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B3       MODEL: RSTOIC                                            TIME =      0.13
+      KODE = 2  NTRIAL =   9  T = 493.1500  P = 2.500000E+06  V =  1.00000      BETA =  1.00000      Q = -153204.    
+
+      UOS BLOCK B7       MODEL: FLASH3                                            TIME =      0.13
+      KODE = 2  NTRIAL =   5  T = 313.1500  P =  180000.      V = 0.842087      BETA = 4.797376E-02  Q = -67405.6    
+
+      UOS BLOCK B6       MODEL: MIXER                                             TIME =      0.13
+      KODE = 1  NTRIAL =  17  T = 313.1500  P =  180000.      V =  1.00000      BETA =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B11      MODEL: SEP                                               TIME =      0.13
+      ---FLASH OUTLET STREAM S16     :
+      KODE = 2  NTRIAL =   1  T = 313.1500  P =  180000.      V =  0.00000      Q =  0.00000    
+      ---FLASH OUTLET STREAM S21     :
+      KODE = 2  NTRIAL =   1  T = 313.1500  P =  180000.      V = 0.999987      Q =  0.00000    
+
+      UOS BLOCK B9       MODEL: COMPR                                             TIME =      0.13
+      OUTLET TEMP =   740.4       OUTLET PRES =  0.2500E+07   INDICATED HP =  0.5691E+05   BRAKE HP =  0.5691E+05
+      ISENTR TEMP =   623.7      CALC ISENTR EFF =  0.7200      ISENTR HP =  0.4097E+05  HP =   235.6    
+
+      UOS BLOCK B13      MODEL: FSPLIT                                            TIME =      0.13
+      NO. TEMP ITER =    5     TEMP =  740.367    
+      KODE = 1  NTRIAL =   2  T = 740.3671  P = 2.500000E+06  V =  1.00000      Q =  0.00000    
+      SPLIT FRACTIONS:  0.90000D+00    0.10000D+00
+
+      CONVERGENCE BLOCK MY-SOLVE  METHOD: BROYDEN                                 TIME =      0.13
+      ITER   5 For Tear Streams: S28
+
+      --FLASH TEAR STREAM S28     
+      NO. TEMP ITER =    5     TEMP =  733.139    
+      KODE = 1  NTRIAL =   2  T = 733.1386  P = 2.500000E+06  V =  1.00000      Q =  0.00000    
+
+  LOOP MY-SOLVE ITER    5:   6 VARS NOT CONVERGED, MAX ERR/TOL      13681.        TIME =      0.13
+
+      UOS BLOCK B8       MODEL: MIXER                                             TIME =      0.13
+      NO. TEMP ITER =    5     TEMP =  867.794    
+      KODE = 1  NTRIAL =   5  T = 867.7936  P = 2.500000E+06  V =  1.00000      BETA =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B3       MODEL: RSTOIC                                            TIME =      0.14
+      KODE = 2  NTRIAL =   9  T = 493.1500  P = 2.500000E+06  V =  1.00000      BETA =  1.00000      Q = -159993.    
+
+      UOS BLOCK B7       MODEL: FLASH3                                            TIME =      0.14
+      KODE = 2  NTRIAL =   4  T = 313.1500  P =  180000.      V = 0.871730      BETA = 5.032229E-02  Q = -70802.6    
+
+      UOS BLOCK B6       MODEL: MIXER                                             TIME =      0.14
+      NO. TEMP ITER =    1     TEMP =  313.150    
+      KODE = 1  NTRIAL =   1  T = 313.1500  P =  180000.      V =  1.00000      BETA =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B11      MODEL: SEP                                               TIME =      0.14
+      ---FLASH OUTLET STREAM S16     :
+      KODE = 2  NTRIAL =   1  T = 313.1500  P =  180000.      V =  0.00000      Q =  0.00000    
+      ---FLASH OUTLET STREAM S21     :
+      KODE = 2  NTRIAL =   1  T = 313.1500  P =  180000.      V = 0.999987      Q =  0.00000    
+
+      UOS BLOCK B9       MODEL: COMPR                                             TIME =      0.14
+      OUTLET TEMP =   739.7       OUTLET PRES =  0.2500E+07   INDICATED HP =  0.6907E+05   BRAKE HP =  0.6907E+05
+      ISENTR TEMP =   623.2      CALC ISENTR EFF =  0.7200      ISENTR HP =  0.4973E+05  HP =   347.2    
+
+      UOS BLOCK B13      MODEL: FSPLIT                                            TIME =      0.14
+      NO. TEMP ITER =    5     TEMP =  739.652    
+      KODE = 1  NTRIAL =   2  T = 739.6520  P = 2.500000E+06  V =  1.00000      Q =  0.00000    
+      SPLIT FRACTIONS:  0.90000D+00    0.10000D+00
+
+      CONVERGENCE BLOCK MY-SOLVE  METHOD: BROYDEN                                 TIME =      0.14
+      ITER   6 For Tear Streams: S28
+
+      --FLASH TEAR STREAM S28     
+      NO. TEMP ITER =    5     TEMP =  738.351    
+      KODE = 1  NTRIAL =   2  T = 738.3510  P = 2.500000E+06  V =  1.00000      Q =  0.00000    
+
+  LOOP MY-SOLVE ITER    6:   6 VARS NOT CONVERGED, MAX ERR/TOL      8278.0        TIME =      0.14
+
+      UOS BLOCK B8       MODEL: MIXER                                             TIME =      0.14
+      NO. TEMP ITER =    5     TEMP =  860.588    
+      KODE = 1  NTRIAL =   5  T = 860.5881  P = 2.500000E+06  V =  1.00000      BETA =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B3       MODEL: RSTOIC                                            TIME =      0.14
+      KODE = 2  NTRIAL =  10  T = 493.1500  P = 2.500000E+06  V =  1.00000      BETA =  1.00000      Q = -165409.    
+
+      UOS BLOCK B7       MODEL: FLASH3                                            TIME =      0.14
+      KODE = 2  NTRIAL =   3  T = 313.1500  P =  180000.      V = 0.886869      BETA = 5.199921E-02  Q = -73038.8    
+
+      UOS BLOCK B6       MODEL: MIXER                                             TIME =      0.14
+      NO. TEMP ITER =    1     TEMP =  313.150    
+      KODE = 1  NTRIAL =   1  T = 313.1499  P =  180000.      V =  1.00000      BETA =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B11      MODEL: SEP                                               TIME =      0.14
+      ---FLASH OUTLET STREAM S16     :
+      KODE = 2  NTRIAL =   1  T = 313.1499  P =  180000.      V =  0.00000      Q =  0.00000    
+      ---FLASH OUTLET STREAM S21     :
+      KODE = 2  NTRIAL =   1  T = 313.1499  P =  180000.      V = 0.999987      Q =  0.00000    
+
+      UOS BLOCK B9       MODEL: COMPR                                             TIME =      0.14
+      OUTLET TEMP =   739.3       OUTLET PRES =  0.2500E+07   INDICATED HP =  0.7707E+05   BRAKE HP =  0.7707E+05
+      ISENTR TEMP =   623.0      CALC ISENTR EFF =  0.7200      ISENTR HP =  0.5549E+05  HP =   432.4    
+
+      UOS BLOCK B13      MODEL: FSPLIT                                            TIME =      0.14
+      NO. TEMP ITER =    5     TEMP =  739.302    
+      KODE = 1  NTRIAL =   2  T = 739.3016  P = 2.500000E+06  V =  1.00000      Q =  0.00000    
+      SPLIT FRACTIONS:  0.90000D+00    0.10000D+00
+
+      CONVERGENCE BLOCK MY-SOLVE  METHOD: BROYDEN                                 TIME =      0.14
+      ITER   7 For Tear Streams: S28
+
+      --FLASH TEAR STREAM S28     
+      NO. TEMP ITER =    5     TEMP =  723.593    
+      KODE = 1  NTRIAL =   2  T = 723.5932  P = 2.500000E+06  V =  1.00000      Q =  0.00000    
+
+  LOOP MY-SOLVE ITER    7:   6 VARS NOT CONVERGED, MAX ERR/TOL      5895.5        TIME =      0.14
+
+      UOS BLOCK B8       MODEL: MIXER                                             TIME =      0.14
+      NO. TEMP ITER =    5     TEMP =  826.888    
+      KODE = 1  NTRIAL =   6  T = 826.8883  P = 2.500000E+06  V =  1.00000      BETA =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B3       MODEL: RSTOIC                                            TIME =      0.14
+      KODE = 2  NTRIAL =  28  T = 493.1500  P = 2.500000E+06  V =  1.00000      BETA =  1.00000      Q = -176468.    
+
+      UOS BLOCK B7       MODEL: FLASH3                                            TIME =      0.15
+      KODE = 2  NTRIAL =   4  T = 313.1500  P =  180000.      V = 0.919836      BETA = 5.786641E-02  Q = -79844.9    
+
+      UOS BLOCK B6       MODEL: MIXER                                             TIME =      0.15
+      KODE = 1  NTRIAL =  17  T = 313.1500  P =  180000.      V =  1.00000      BETA =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B11      MODEL: SEP                                               TIME =      0.15
+      ---FLASH OUTLET STREAM S16     :
+      KODE = 2  NTRIAL =   1  T = 313.1500  P =  180000.      V =  0.00000      Q =  0.00000    
+      ---FLASH OUTLET STREAM S21     :
+      KODE = 2  NTRIAL =   1  T = 313.1500  P =  180000.      V = 0.999987      Q =  0.00000    
+
+      UOS BLOCK B9       MODEL: COMPR                                             TIME =      0.15
+      OUTLET TEMP =   738.6       OUTLET PRES =  0.2500E+07   INDICATED HP =  0.1013E+06   BRAKE HP =  0.1013E+06
+      ISENTR TEMP =   622.5      CALC ISENTR EFF =  0.7200      ISENTR HP =  0.7295E+05  HP =   747.7    
+
+      UOS BLOCK B13      MODEL: FSPLIT                                            TIME =      0.15
+      NO. TEMP ITER =    5     TEMP =  738.578    
+      KODE = 1  NTRIAL =   2  T = 738.5783  P = 2.500000E+06  V =  1.00000      Q =  0.00000    
+      SPLIT FRACTIONS:  0.90000D+00    0.10000D+00
+
+      CONVERGENCE BLOCK MY-SOLVE  METHOD: BROYDEN                                 TIME =      0.15
+      ITER   8 For Tear Streams: S28
+
+      --FLASH TEAR STREAM S28     
+      NO. TEMP ITER =    5     TEMP =  741.813    
+      KODE = 1  NTRIAL =   2  T = 741.8129  P = 2.500000E+06  V =  1.00000      Q =  0.00000    
+
+  LOOP MY-SOLVE ITER    8:   6 VARS NOT CONVERGED, MAX ERR/TOL      1399.0        TIME =      0.15
+
+      UOS BLOCK B8       MODEL: MIXER                                             TIME =      0.15
+      NO. TEMP ITER =    5     TEMP =  851.265    
+      KODE = 1  NTRIAL =   6  T = 851.2654  P = 2.500000E+06  V =  1.00000      BETA =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B3       MODEL: RSTOIC                                            TIME =      0.15
+      KODE = 2  NTRIAL =  12  T = 493.1500  P = 2.500000E+06  V =  1.00000      BETA =  1.00000      Q = -172405.    
+
+      UOS BLOCK B7       MODEL: FLASH3                                            TIME =      0.15
+      KODE = 2  NTRIAL =   3  T = 313.1500  P =  180000.      V = 0.903469      BETA = 5.445324E-02  Q = -76064.5    
+
+      UOS BLOCK B6       MODEL: MIXER                                             TIME =      0.15
+      KODE = 1  NTRIAL =  17  T = 313.1500  P =  180000.      V =  1.00000      BETA =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B11      MODEL: SEP                                               TIME =      0.15
+      ---FLASH OUTLET STREAM S16     :
+      KODE = 2  NTRIAL =   1  T = 313.1500  P =  180000.      V =  0.00000      Q =  0.00000    
+      ---FLASH OUTLET STREAM S21     :
+      KODE = 2  NTRIAL =   1  T = 313.1500  P =  180000.      V = 0.999987      Q =  0.00000    
+
+      UOS BLOCK B9       MODEL: COMPR                                             TIME =      0.15
+      OUTLET TEMP =   738.9       OUTLET PRES =  0.2500E+07   INDICATED HP =  0.8785E+05   BRAKE HP =  0.8785E+05
+      ISENTR TEMP =   622.7      CALC ISENTR EFF =  0.7200      ISENTR HP =  0.6325E+05  HP =   561.9    
+
+      UOS BLOCK B13      MODEL: FSPLIT                                            TIME =      0.15
+      NO. TEMP ITER =    5     TEMP =  738.925    
+      KODE = 1  NTRIAL =   2  T = 738.9253  P = 2.500000E+06  V =  1.00000      Q =  0.00000    
+      SPLIT FRACTIONS:  0.90000D+00    0.10000D+00
+
+      CONVERGENCE BLOCK MY-SOLVE  METHOD: BROYDEN                                 TIME =      0.15
+      ITER   9 For Tear Streams: S28
+
+      --FLASH TEAR STREAM S28     
+      NO. TEMP ITER =    5     TEMP =  740.255    
+      KODE = 1  NTRIAL =   2  T = 740.2554  P = 2.500000E+06  V =  1.00000      Q =  0.00000    
+
+  LOOP MY-SOLVE ITER    9:   6 VARS NOT CONVERGED, MAX ERR/TOL      3520.7        TIME =      0.15
+
+      UOS BLOCK B8       MODEL: MIXER                                             TIME =      0.15
+      NO. TEMP ITER =    5     TEMP =  843.980    
+      KODE = 1  NTRIAL =   6  T = 843.9798  P = 2.500000E+06  V =  1.00000      BETA =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B3       MODEL: RSTOIC                                            TIME =      0.15
+      KODE = 2  NTRIAL =  28  T = 493.1500  P = 2.500000E+06  V =  1.00000      BETA =  1.00000      Q = -176174.    
+
+      UOS BLOCK B7       MODEL: FLASH3                                            TIME =      0.15
+      KODE = 2  NTRIAL =   3  T = 313.1500  P =  180000.      V = 0.912272      BETA = 5.613201E-02  Q = -77982.7    
+
+      UOS BLOCK B6       MODEL: MIXER                                             TIME =      0.16
+      NO. TEMP ITER =    1     TEMP =  313.150    
+      NO. TEMP ITER =    1     TEMP =  313.150    
+      KODE = 1  NTRIAL =   1  T = 313.1500  P =  180000.      V =  1.00000      BETA =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B11      MODEL: SEP                                               TIME =      0.16
+      ---FLASH OUTLET STREAM S16     :
+      KODE = 2  NTRIAL =   1  T = 313.1500  P =  180000.      V =  0.00000      Q =  0.00000    
+      ---FLASH OUTLET STREAM S21     :
+      KODE = 2  NTRIAL =   1  T = 313.1500  P =  180000.      V = 0.999987      Q =  0.00000    
+
+      UOS BLOCK B9       MODEL: COMPR                                             TIME =      0.16
+      OUTLET TEMP =   738.7       OUTLET PRES =  0.2500E+07   INDICATED HP =  0.9468E+05   BRAKE HP =  0.9468E+05
+      ISENTR TEMP =   622.6      CALC ISENTR EFF =  0.7200      ISENTR HP =  0.6817E+05  HP =   652.7    
+
+      UOS BLOCK B13      MODEL: FSPLIT                                            TIME =      0.16
+      NO. TEMP ITER =    5     TEMP =  738.730    
+      KODE = 1  NTRIAL =   2  T = 738.7300  P = 2.500000E+06  V =  1.00000      Q =  0.00000    
+      SPLIT FRACTIONS:  0.90000D+00    0.10000D+00
+
+      CONVERGENCE BLOCK MY-SOLVE  METHOD: BROYDEN                                 TIME =      0.16
+      ITER  10 For Tear Streams: S28
+
+      --FLASH TEAR STREAM S28     
+      NO. TEMP ITER =    5     TEMP =  738.746    
+      KODE = 1  NTRIAL =   2  T = 738.7462  P = 2.500000E+06  V =  1.00000      Q =  0.00000    
+
+  LOOP MY-SOLVE ITER   10:   6 VARS NOT CONVERGED, MAX ERR/TOL      2352.5        TIME =      0.16
+
+      UOS BLOCK B8       MODEL: MIXER                                             TIME =      0.16
+      NO. TEMP ITER =    5     TEMP =  836.908    
+      KODE = 1  NTRIAL =   6  T = 836.9076  P = 2.500000E+06  V =  1.00000      BETA =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B3       MODEL: RSTOIC                                            TIME =      0.16
+      KODE = 2  NTRIAL =  28  T = 493.1500  P = 2.500000E+06  V =  1.00000      BETA =  1.00000      Q = -180235.    
+
+      UOS BLOCK B7       MODEL: FLASH3                                            TIME =      0.16
+      KODE = 2  NTRIAL =   3  T = 313.1500  P =  180000.      V = 0.920627      BETA = 5.807022E-02  Q = -80059.5    
+
+      UOS BLOCK B6       MODEL: MIXER                                             TIME =      0.16
+      KODE = 1  NTRIAL =  17  T = 313.1499  P =  180000.      V =  1.00000      BETA =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B11      MODEL: SEP                                               TIME =      0.16
+      ---FLASH OUTLET STREAM S16     :
+      KODE = 2  NTRIAL =   1  T = 313.1499  P =  180000.      V =  0.00000      Q =  0.00000    
+      ---FLASH OUTLET STREAM S21     :
+      KODE = 2  NTRIAL =   1  T = 313.1499  P =  180000.      V = 0.999987      Q =  0.00000    
+
+      UOS BLOCK B9       MODEL: COMPR                                             TIME =      0.16
+      OUTLET TEMP =   738.5       OUTLET PRES =  0.2500E+07   INDICATED HP =  0.1021E+06   BRAKE HP =  0.1021E+06
+      ISENTR TEMP =   622.5      CALC ISENTR EFF =  0.7200      ISENTR HP =  0.7349E+05  HP =   758.7    
+
+      UOS BLOCK B13      MODEL: FSPLIT                                            TIME =      0.16
+      NO. TEMP ITER =    5     TEMP =  738.544    
+      KODE = 1  NTRIAL =   2  T = 738.5440  P = 2.500000E+06  V =  1.00000      Q =  0.00000    
+      SPLIT FRACTIONS:  0.90000D+00    0.10000D+00
+
+      CONVERGENCE BLOCK MY-SOLVE  METHOD: BROYDEN                                 TIME =      0.16
+      ITER  11 For Tear Streams: S28
+
+      --FLASH TEAR STREAM S28     
+      NO. TEMP ITER =    5     TEMP =  738.362    
+      KODE = 1  NTRIAL =   2  T = 738.3620  P = 2.500000E+06  V =  1.00000      Q =  0.00000    
+
+  LOOP MY-SOLVE ITER   11:   6 VARS NOT CONVERGED, MAX ERR/TOL      1295.7        TIME =      0.17
+
+      UOS BLOCK B8       MODEL: MIXER                                             TIME =      0.17
+      NO. TEMP ITER =    5     TEMP =  832.811    
+      KODE = 1  NTRIAL =   6  T = 832.8115  P = 2.500000E+06  V =  1.00000      BETA =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B3       MODEL: RSTOIC                                            TIME =      0.17
+      KODE = 2  NTRIAL =  27  T = 493.1500  P = 2.500000E+06  V =  1.00000      BETA =  1.00000      Q = -183198.    
+
+      UOS BLOCK B7       MODEL: FLASH3                                            TIME =      0.17
+      KODE = 2  NTRIAL =   3  T = 313.1500  P =  180000.      V = 0.925857      BETA = 5.950577E-02  Q = -81510.4    
+
+      UOS BLOCK B6       MODEL: MIXER                                             TIME =      0.17
+      KODE = 1  NTRIAL =  17  T = 313.1500  P =  180000.      V =  1.00000      BETA =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B11      MODEL: SEP                                               TIME =      0.17
+      ---FLASH OUTLET STREAM S16     :
+      KODE = 2  NTRIAL =   1  T = 313.1500  P =  180000.      V =  0.00000      Q =  0.00000    
+      ---FLASH OUTLET STREAM S21     :
+      KODE = 2  NTRIAL =   1  T = 313.1500  P =  180000.      V = 0.999987      Q =  0.00000    
+
+      UOS BLOCK B9       MODEL: COMPR                                             TIME =      0.17
+      OUTLET TEMP =   738.4       OUTLET PRES =  0.2500E+07   INDICATED HP =  0.1072E+06   BRAKE HP =  0.1072E+06
+      ISENTR TEMP =   622.4      CALC ISENTR EFF =  0.7200      ISENTR HP =  0.7721E+05  HP =   837.5    
+
+      UOS BLOCK B13      MODEL: FSPLIT                                            TIME =      0.17
+      NO. TEMP ITER =    5     TEMP =  738.424    
+      KODE = 1  NTRIAL =   2  T = 738.4243  P = 2.500000E+06  V =  1.00000      Q =  0.00000    
+      SPLIT FRACTIONS:  0.90000D+00    0.10000D+00
+
+      CONVERGENCE BLOCK MY-SOLVE  METHOD: BROYDEN                                 TIME =      0.17
+      ITER  12 For Tear Streams: S28
+
+      --FLASH TEAR STREAM S28     
+      NO. TEMP ITER =    5     TEMP =  738.237    
+      KODE = 1  NTRIAL =   2  T = 738.2374  P = 2.500000E+06  V =  1.00000      Q =  0.00000    
+
+  LOOP MY-SOLVE ITER   12:   6 VARS NOT CONVERGED, MAX ERR/TOL      657.97        TIME =      0.17
+
+      UOS BLOCK B8       MODEL: MIXER                                             TIME =      0.17
+      NO. TEMP ITER =    5     TEMP =  830.204    
+      KODE = 1  NTRIAL =   6  T = 830.2044  P = 2.500000E+06  V =  1.00000      BETA =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B3       MODEL: RSTOIC                                            TIME =      0.17
+      KODE = 2  NTRIAL =  26  T = 493.1500  P = 2.500000E+06  V =  1.00000      BETA =  1.00000      Q = -185311.    
+
+      UOS BLOCK B7       MODEL: FLASH3                                            TIME =      0.17
+      KODE = 2  NTRIAL =   3  T = 313.1500  P =  180000.      V = 0.929273      BETA = 6.055808E-02  Q = -82530.9    
+
+      UOS BLOCK B6       MODEL: MIXER                                             TIME =      0.17
+      KODE = 1  NTRIAL =  17  T = 313.1500  P =  180000.      V =  1.00000      BETA =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B11      MODEL: SEP                                               TIME =      0.17
+      ---FLASH OUTLET STREAM S16     :
+      KODE = 2  NTRIAL =   1  T = 313.1500  P =  180000.      V =  0.00000      Q =  0.00000    
+      ---FLASH OUTLET STREAM S21     :
+      KODE = 2  NTRIAL =   1  T = 313.1500  P =  180000.      V = 0.999987      Q =  0.00000    
+
+      UOS BLOCK B9       MODEL: COMPR                                             TIME =      0.17
+      OUTLET TEMP =   738.3       OUTLET PRES =  0.2500E+07   INDICATED HP =  0.1109E+06   BRAKE HP =  0.1109E+06
+      ISENTR TEMP =   622.3      CALC ISENTR EFF =  0.7200      ISENTR HP =  0.7982E+05  HP =   895.2    
+
+      UOS BLOCK B13      MODEL: FSPLIT                                            TIME =      0.17
+      NO. TEMP ITER =    5     TEMP =  738.342    
+      KODE = 1  NTRIAL =   2  T = 738.3423  P = 2.500000E+06  V =  1.00000      Q =  0.00000    
+      SPLIT FRACTIONS:  0.90000D+00    0.10000D+00
+
+      CONVERGENCE BLOCK MY-SOLVE  METHOD: BROYDEN                                 TIME =      0.17
+      ITER  13 For Tear Streams: S28
+
+      --FLASH TEAR STREAM S28     
+      NO. TEMP ITER =    5     TEMP =  738.259    
+      KODE = 1  NTRIAL =   2  T = 738.2585  P = 2.500000E+06  V =  1.00000      Q =  0.00000    
+
+  LOOP MY-SOLVE ITER   13:   6 VARS NOT CONVERGED, MAX ERR/TOL      250.23        TIME =      0.18
+
+      UOS BLOCK B8       MODEL: MIXER                                             TIME =      0.18
+      NO. TEMP ITER =    5     TEMP =  829.047    
+      KODE = 1  NTRIAL =   6  T = 829.0469  P = 2.500000E+06  V =  1.00000      BETA =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B3       MODEL: RSTOIC                                            TIME =      0.18
+      KODE = 2  NTRIAL =   5  T = 493.1500  P = 2.500000E+06  V =  1.00000      BETA =  1.00000      Q = -186354.    
+
+      UOS BLOCK B7       MODEL: FLASH3                                            TIME =      0.18
+      KODE = 2  NTRIAL =   3  T = 313.1500  P =  180000.      V = 0.930857      BETA = 6.108121E-02  Q = -83025.5    
+
+      UOS BLOCK B6       MODEL: MIXER                                             TIME =      0.18
+      KODE = 1  NTRIAL =  17  T = 313.1500  P =  180000.      V =  1.00000      BETA =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B11      MODEL: SEP                                               TIME =      0.18
+      ---FLASH OUTLET STREAM S16     :
+      KODE = 2  NTRIAL =   1  T = 313.1500  P =  180000.      V =  0.00000      Q =  0.00000    
+      ---FLASH OUTLET STREAM S21     :
+      KODE = 2  NTRIAL =   1  T = 313.1500  P =  180000.      V = 0.999987      Q =  0.00000    
+
+      UOS BLOCK B9       MODEL: COMPR                                             TIME =      0.18
+      OUTLET TEMP =   738.3       OUTLET PRES =  0.2500E+07   INDICATED HP =  0.1126E+06   BRAKE HP =  0.1126E+06
+      ISENTR TEMP =   622.3      CALC ISENTR EFF =  0.7200      ISENTR HP =  0.8109E+05  HP =   923.9    
+
+      UOS BLOCK B13      MODEL: FSPLIT                                            TIME =      0.18
+      NO. TEMP ITER =    5     TEMP =  738.300    
+      KODE = 1  NTRIAL =   2  T = 738.2999  P = 2.500000E+06  V =  1.00000      Q =  0.00000    
+      SPLIT FRACTIONS:  0.90000D+00    0.10000D+00
+
+      CONVERGENCE BLOCK MY-SOLVE  METHOD: BROYDEN                                 TIME =      0.18
+      ITER  14 For Tear Streams: S28
+
+      --FLASH TEAR STREAM S28     
+      NO. TEMP ITER =    5     TEMP =  738.246    
+      KODE = 1  NTRIAL =   2  T = 738.2463  P = 2.500000E+06  V =  1.00000      Q =  0.00000    
+
+  LOOP MY-SOLVE ITER   14:   5 VARS NOT CONVERGED, MAX ERR/TOL      62.752        TIME =      0.18
+
+      UOS BLOCK B8       MODEL: MIXER                                             TIME =      0.18
+      NO. TEMP ITER =    5     TEMP =  828.562    
+      KODE = 1  NTRIAL =   6  T = 828.5615  P = 2.500000E+06  V =  1.00000      BETA =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B3       MODEL: RSTOIC                                            TIME =      0.18
+      KODE = 2  NTRIAL =  26  T = 493.1500  P = 2.500000E+06  V =  1.00000      BETA =  1.00000      Q = -186780.    
+
+      UOS BLOCK B7       MODEL: FLASH3                                            TIME =      0.18
+      KODE = 2  NTRIAL =   3  T = 313.1500  P =  180000.      V = 0.931498      BETA = 6.129992E-02  Q = -83230.1    
+
+      UOS BLOCK B6       MODEL: MIXER                                             TIME =      0.18
+      KODE = 1  NTRIAL =  17  T = 313.1500  P =  180000.      V =  1.00000      BETA =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B11      MODEL: SEP                                               TIME =      0.18
+      ---FLASH OUTLET STREAM S16     :
+      KODE = 2  NTRIAL =   1  T = 313.1500  P =  180000.      V =  0.00000      Q =  0.00000    
+      ---FLASH OUTLET STREAM S21     :
+      KODE = 2  NTRIAL =   1  T = 313.1500  P =  180000.      V = 0.999987      Q =  0.00000    
+
+      UOS BLOCK B9       MODEL: COMPR                                             TIME =      0.18
+      OUTLET TEMP =   738.3       OUTLET PRES =  0.2500E+07   INDICATED HP =  0.1134E+06   BRAKE HP =  0.1134E+06
+      ISENTR TEMP =   622.3      CALC ISENTR EFF =  0.7200      ISENTR HP =  0.8161E+05  HP =   935.9    
+
+      UOS BLOCK B13      MODEL: FSPLIT                                            TIME =      0.19
+      NO. TEMP ITER =    5     TEMP =  738.279    
+      KODE = 1  NTRIAL =   2  T = 738.2785  P = 2.500000E+06  V =  1.00000      Q =  0.00000    
+      SPLIT FRACTIONS:  0.90000D+00    0.10000D+00
+
+      CONVERGENCE BLOCK MY-SOLVE  METHOD: BROYDEN                                 TIME =      0.19
+      ITER  15 For Tear Streams: S28
+
+      --FLASH TEAR STREAM S28     
+      NO. TEMP ITER =    5     TEMP =  738.264    
+      KODE = 1  NTRIAL =   2  T = 738.2639  P = 2.500000E+06  V =  1.00000      Q =  0.00000    
+
+  LOOP MY-SOLVE ITER   15:   5 VARS NOT CONVERGED, MAX ERR/TOL     -24.564        TIME =      0.19
+
+      UOS BLOCK B8       MODEL: MIXER                                             TIME =      0.19
+      NO. TEMP ITER =    5     TEMP =  828.598    
+      KODE = 1  NTRIAL =   6  T = 828.5977  P = 2.500000E+06  V =  1.00000      BETA =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B3       MODEL: RSTOIC                                            TIME =      0.19
+      KODE = 2  NTRIAL =  26  T = 493.1500  P = 2.500000E+06  V =  1.00000      BETA =  1.00000      Q = -186763.    
+
+      UOS BLOCK B7       MODEL: FLASH3                                            TIME =      0.19
+      KODE = 2  NTRIAL =   1  T = 313.1500  P =  180000.      V = 0.931466      BETA = 6.128873E-02  Q = -83220.0    
+
+      UOS BLOCK B6       MODEL: MIXER                                             TIME =      0.19
+      KODE = 1  NTRIAL =  17  T = 313.1500  P =  180000.      V =  1.00000      BETA =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B11      MODEL: SEP                                               TIME =      0.19
+      ---FLASH OUTLET STREAM S16     :
+      KODE = 2  NTRIAL =   1  T = 313.1500  P =  180000.      V =  0.00000      Q =  0.00000    
+      ---FLASH OUTLET STREAM S21     :
+      KODE = 2  NTRIAL =   1  T = 313.1500  P =  180000.      V = 0.999987      Q =  0.00000    
+
+      UOS BLOCK B9       MODEL: COMPR                                             TIME =      0.19
+      OUTLET TEMP =   738.3       OUTLET PRES =  0.2500E+07   INDICATED HP =  0.1133E+06   BRAKE HP =  0.1133E+06
+      ISENTR TEMP =   622.3      CALC ISENTR EFF =  0.7200      ISENTR HP =  0.8159E+05  HP =   935.2    
+
+      UOS BLOCK B13      MODEL: FSPLIT                                            TIME =      0.19
+      NO. TEMP ITER =    5     TEMP =  738.276    
+      KODE = 1  NTRIAL =   2  T = 738.2756  P = 2.500000E+06  V =  1.00000      Q =  0.00000    
+      SPLIT FRACTIONS:  0.90000D+00    0.10000D+00
+
+      CONVERGENCE BLOCK MY-SOLVE  METHOD: BROYDEN                                 TIME =      0.19
+      ITER  16 For Tear Streams: S28
+
+      --FLASH TEAR STREAM S28     
+      NO. TEMP ITER =    5     TEMP =  738.257    
+      KODE = 1  NTRIAL =   2  T = 738.2572  P = 2.500000E+06  V =  1.00000      Q =  0.00000    
+
+  LOOP MY-SOLVE ITER   16:   5 VARS NOT CONVERGED, MAX ERR/TOL     -20.711        TIME =      0.19
+
+      UOS BLOCK B8       MODEL: MIXER                                             TIME =      0.19
+      NO. TEMP ITER =    5     TEMP =  828.568    
+      KODE = 1  NTRIAL =   6  T = 828.5676  P = 2.500000E+06  V =  1.00000      BETA =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B3       MODEL: RSTOIC                                            TIME =      0.19
+      KODE = 2  NTRIAL =  26  T = 493.1500  P = 2.500000E+06  V =  1.00000      BETA =  1.00000      Q = -186784.    
+
+      UOS BLOCK B7       MODEL: FLASH3                                            TIME =      0.19
+      KODE = 2  NTRIAL =   3  T = 313.1500  P =  180000.      V = 0.931499      BETA = 6.130022E-02  Q = -83230.8    
+
+      UOS BLOCK B6       MODEL: MIXER                                             TIME =      0.19
+      KODE = 1  NTRIAL =  17  T = 313.1500  P =  180000.      V =  1.00000      BETA =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B11      MODEL: SEP                                               TIME =      0.19
+      ---FLASH OUTLET STREAM S16     :
+      KODE = 2  NTRIAL =   1  T = 313.1500  P =  180000.      V =  0.00000      Q =  0.00000    
+      ---FLASH OUTLET STREAM S21     :
+      KODE = 2  NTRIAL =   1  T = 313.1500  P =  180000.      V = 0.999987      Q =  0.00000    
+
+      UOS BLOCK B9       MODEL: COMPR                                             TIME =      0.19
+      OUTLET TEMP =   738.3       OUTLET PRES =  0.2500E+07   INDICATED HP =  0.1134E+06   BRAKE HP =  0.1134E+06
+      ISENTR TEMP =   622.3      CALC ISENTR EFF =  0.7200      ISENTR HP =  0.8161E+05  HP =   935.9    
+
+      UOS BLOCK B13      MODEL: FSPLIT                                            TIME =      0.19
+      NO. TEMP ITER =    5     TEMP =  738.272    
+      KODE = 1  NTRIAL =   2  T = 738.2722  P = 2.500000E+06  V =  1.00000      Q =  0.00000    
+      SPLIT FRACTIONS:  0.90000D+00    0.10000D+00
+
+      CONVERGENCE BLOCK MY-SOLVE  METHOD: BROYDEN                                 TIME =      0.19
+      ITER  17 For Tear Streams: S28
+
+      --FLASH TEAR STREAM S28     
+      NO. TEMP ITER =    5     TEMP =  738.246    
+      KODE = 1  NTRIAL =   2  T = 738.2455  P = 2.500000E+06  V =  1.00000      Q =  0.00000    
+
+  LOOP MY-SOLVE ITER   17:   5 VARS NOT CONVERGED, MAX ERR/TOL     -24.317        TIME =      0.20
+
+      UOS BLOCK B8       MODEL: MIXER                                             TIME =      0.20
+      NO. TEMP ITER =    5     TEMP =  828.544    
+      KODE = 1  NTRIAL =   6  T = 828.5441  P = 2.500000E+06  V =  1.00000      BETA =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B3       MODEL: RSTOIC                                            TIME =      0.20
+      KODE = 2  NTRIAL =  26  T = 493.1500  P = 2.500000E+06  V =  1.00000      BETA =  1.00000      Q = -186795.    
+
+      UOS BLOCK B7       MODEL: FLASH3                                            TIME =      0.20
+      KODE = 2  NTRIAL =   3  T = 313.1500  P =  180000.      V = 0.931517      BETA = 6.130643E-02  Q = -83237.2    
+
+      UOS BLOCK B6       MODEL: MIXER                                             TIME =      0.20
+      KODE = 1  NTRIAL =  17  T = 313.1500  P =  180000.      V =  1.00000      BETA =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B11      MODEL: SEP                                               TIME =      0.20
+      ---FLASH OUTLET STREAM S16     :
+      KODE = 2  NTRIAL =   1  T = 313.1500  P =  180000.      V =  0.00000      Q =  0.00000    
+      ---FLASH OUTLET STREAM S21     :
+      KODE = 2  NTRIAL =   1  T = 313.1500  P =  180000.      V = 0.999987      Q =  0.00000    
+
+      UOS BLOCK B9       MODEL: COMPR                                             TIME =      0.20
+      OUTLET TEMP =   738.3       OUTLET PRES =  0.2500E+07   INDICATED HP =  0.1134E+06   BRAKE HP =  0.1134E+06
+      ISENTR TEMP =   622.3      CALC ISENTR EFF =  0.7200      ISENTR HP =  0.8163E+05  HP =   936.2    
+
+      UOS BLOCK B13      MODEL: FSPLIT                                            TIME =      0.20
+      NO. TEMP ITER =    5     TEMP =  738.263    
+      KODE = 1  NTRIAL =   2  T = 738.2627  P = 2.500000E+06  V =  1.00000      Q =  0.00000    
+      SPLIT FRACTIONS:  0.90000D+00    0.10000D+00
+
+      CONVERGENCE BLOCK MY-SOLVE  METHOD: BROYDEN                                 TIME =      0.20
+      ITER  18 For Tear Streams: S28
+
+      --FLASH TEAR STREAM S28     
+      NO. TEMP ITER =    5     TEMP =  738.230    
+      KODE = 1  NTRIAL =   2  T = 738.2296  P = 2.500000E+06  V =  1.00000      Q =  0.00000    
+
+  LOOP MY-SOLVE ITER   18:   4 VARS NOT CONVERGED, MAX ERR/TOL     -25.866        TIME =      0.20
+
+      UOS BLOCK B8       MODEL: MIXER                                             TIME =      0.20
+      NO. TEMP ITER =    5     TEMP =  828.558    
+      KODE = 1  NTRIAL =   6  T = 828.5578  P = 2.500000E+06  V =  1.00000      BETA =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B3       MODEL: RSTOIC                                            TIME =      0.20
+      KODE = 2  NTRIAL =  26  T = 493.1500  P = 2.500000E+06  V =  1.00000      BETA =  1.00000      Q = -186767.    
+
+      UOS BLOCK B7       MODEL: FLASH3                                            TIME =      0.20
+      KODE = 2  NTRIAL =   3  T = 313.1500  P =  180000.      V = 0.931478      BETA = 6.129308E-02  Q = -83226.3    
+
+      UOS BLOCK B6       MODEL: MIXER                                             TIME =      0.20
+      KODE = 1  NTRIAL =  17  T = 313.1500  P =  180000.      V =  1.00000      BETA =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B11      MODEL: SEP                                               TIME =      0.20
+      ---FLASH OUTLET STREAM S16     :
+      KODE = 2  NTRIAL =   1  T = 313.1500  P =  180000.      V =  0.00000      Q =  0.00000    
+      ---FLASH OUTLET STREAM S21     :
+      KODE = 2  NTRIAL =   1  T = 313.1500  P =  180000.      V = 0.999987      Q =  0.00000    
+
+      UOS BLOCK B9       MODEL: COMPR                                             TIME =      0.20
+      OUTLET TEMP =   738.2       OUTLET PRES =  0.2500E+07   INDICATED HP =  0.1133E+06   BRAKE HP =  0.1133E+06
+      ISENTR TEMP =   622.2      CALC ISENTR EFF =  0.7200      ISENTR HP =  0.8160E+05  HP =   935.5    
+
+      UOS BLOCK B13      MODEL: FSPLIT                                            TIME =      0.20
+      NO. TEMP ITER =    5     TEMP =  738.245    
+      KODE = 1  NTRIAL =   2  T = 738.2447  P = 2.500000E+06  V =  1.00000      Q =  0.00000    
+      SPLIT FRACTIONS:  0.90000D+00    0.10000D+00
+
+      CONVERGENCE BLOCK MY-SOLVE  METHOD: BROYDEN                                 TIME =      0.20
+      ITER  19 For Tear Streams: S28
+
+      --FLASH TEAR STREAM S28     
+      NO. TEMP ITER =    5     TEMP =  738.221    
+      KODE = 1  NTRIAL =   2  T = 738.2205  P = 2.500000E+06  V =  1.00000      Q =  0.00000    
+
+  LOOP MY-SOLVE ITER   19:   4 VARS NOT CONVERGED, MAX ERR/TOL     -20.537        TIME =      0.21
+
+      UOS BLOCK B8       MODEL: MIXER                                             TIME =      0.21
+      NO. TEMP ITER =    5     TEMP =  828.639    
+      KODE = 1  NTRIAL =   6  T = 828.6393  P = 2.500000E+06  V =  1.00000      BETA =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B3       MODEL: RSTOIC                                            TIME =      0.21
+      KODE = 2  NTRIAL =  26  T = 493.1500  P = 2.500000E+06  V =  1.00000      BETA =  1.00000      Q = -186685.    
+
+      UOS BLOCK B7       MODEL: FLASH3                                            TIME =      0.21
+      KODE = 2  NTRIAL =   3  T = 313.1500  P =  180000.      V = 0.931354      BETA = 6.125042E-02  Q = -83188.1    
+
+      UOS BLOCK B6       MODEL: MIXER                                             TIME =      0.21
+      KODE = 1  NTRIAL =  17  T = 313.1500  P =  180000.      V =  1.00000      BETA =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B11      MODEL: SEP                                               TIME =      0.21
+      ---FLASH OUTLET STREAM S16     :
+      KODE = 2  NTRIAL =   1  T = 313.1500  P =  180000.      V =  0.00000      Q =  0.00000    
+      ---FLASH OUTLET STREAM S21     :
+      KODE = 2  NTRIAL =   1  T = 313.1500  P =  180000.      V = 0.999987      Q =  0.00000    
+
+      UOS BLOCK B9       MODEL: COMPR                                             TIME =      0.21
+      OUTLET TEMP =   738.2       OUTLET PRES =  0.2500E+07   INDICATED HP =  0.1132E+06   BRAKE HP =  0.1132E+06
+      ISENTR TEMP =   622.2      CALC ISENTR EFF =  0.7200      ISENTR HP =  0.8149E+05  HP =   933.1    
+
+      UOS BLOCK B13      MODEL: FSPLIT                                            TIME =      0.21
+      NO. TEMP ITER =    5     TEMP =  738.226    
+      KODE = 1  NTRIAL =   2  T = 738.2257  P = 2.500000E+06  V =  1.00000      Q =  0.00000    
+      SPLIT FRACTIONS:  0.90000D+00    0.10000D+00
+
+      CONVERGENCE BLOCK MY-SOLVE  METHOD: BROYDEN                                 TIME =      0.21
+      ITER  20 For Tear Streams: S28
+
+      --FLASH TEAR STREAM S28     
+      NO. TEMP ITER =    5     TEMP =  738.229    
+      KODE = 1  NTRIAL =   2  T = 738.2285  P = 2.500000E+06  V =  1.00000      Q =  0.00000    
+
+  LOOP MY-SOLVE ITER   20:   5 VARS NOT CONVERGED, MAX ERR/TOL     -10.155        TIME =      0.21
+
+      UOS BLOCK B8       MODEL: MIXER                                             TIME =      0.21
+      NO. TEMP ITER =    5     TEMP =  828.712    
+      KODE = 1  NTRIAL =   6  T = 828.7120  P = 2.500000E+06  V =  1.00000      BETA =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B3       MODEL: RSTOIC                                            TIME =      0.21
+      KODE = 2  NTRIAL =  26  T = 493.1500  P = 2.500000E+06  V =  1.00000      BETA =  1.00000      Q = -186627.    
+
+      UOS BLOCK B7       MODEL: FLASH3                                            TIME =      0.21
+      KODE = 2  NTRIAL =   1  T = 313.1500  P =  180000.      V = 0.931264      BETA = 6.121938E-02  Q = -83159.4    
+
+      UOS BLOCK B6       MODEL: MIXER                                             TIME =      0.21
+      KODE = 1  NTRIAL =  17  T = 313.1500  P =  180000.      V =  1.00000      BETA =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B11      MODEL: SEP                                               TIME =      0.21
+      ---FLASH OUTLET STREAM S16     :
+      KODE = 2  NTRIAL =   1  T = 313.1500  P =  180000.      V =  0.00000      Q =  0.00000    
+      ---FLASH OUTLET STREAM S21     :
+      KODE = 2  NTRIAL =   1  T = 313.1500  P =  180000.      V = 0.999987      Q =  0.00000    
+
+      UOS BLOCK B9       MODEL: COMPR                                             TIME =      0.21
+      OUTLET TEMP =   738.2       OUTLET PRES =  0.2500E+07   INDICATED HP =  0.1131E+06   BRAKE HP =  0.1131E+06
+      ISENTR TEMP =   622.2      CALC ISENTR EFF =  0.7200      ISENTR HP =  0.8142E+05  HP =   931.4    
+
+      UOS BLOCK B13      MODEL: FSPLIT                                            TIME =      0.22
+      NO. TEMP ITER =    5     TEMP =  738.226    
+      KODE = 1  NTRIAL =   2  T = 738.2262  P = 2.500000E+06  V =  1.00000      Q =  0.00000    
+      SPLIT FRACTIONS:  0.90000D+00    0.10000D+00
+
+      CONVERGENCE BLOCK MY-SOLVE  METHOD: BROYDEN                                 TIME =      0.22
+      ITER  21 For Tear Streams: S28
+
+      --FLASH TEAR STREAM S28     
+      NO. TEMP ITER =    5     TEMP =  738.237    
+      KODE = 1  NTRIAL =   2  T = 738.2368  P = 2.500000E+06  V =  1.00000      Q =  0.00000    
+
+  LOOP MY-SOLVE ITER   21:   4 VARS NOT CONVERGED, MAX ERR/TOL      4.8374        TIME =      0.22
+
+      UOS BLOCK B8       MODEL: MIXER                                             TIME =      0.22
+      NO. TEMP ITER =    5     TEMP =  828.711    
+      KODE = 1  NTRIAL =   6  T = 828.7107  P = 2.500000E+06  V =  1.00000      BETA =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B3       MODEL: RSTOIC                                            TIME =      0.22
+      KODE = 2  NTRIAL =   5  T = 493.1500  P = 2.500000E+06  V =  1.00000      BETA =  1.00000      Q = -186635.    
+
+      UOS BLOCK B7       MODEL: FLASH3                                            TIME =      0.22
+      KODE = 2  NTRIAL =   3  T = 313.1500  P =  180000.      V = 0.931276      BETA = 6.122357E-02  Q = -83162.6    
+
+      UOS BLOCK B6       MODEL: MIXER                                             TIME =      0.22
+      KODE = 1  NTRIAL =  17  T = 313.1500  P =  180000.      V =  1.00000      BETA =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B11      MODEL: SEP                                               TIME =      0.22
+      ---FLASH OUTLET STREAM S16     :
+      KODE = 2  NTRIAL =   1  T = 313.1500  P =  180000.      V =  0.00000      Q =  0.00000    
+      ---FLASH OUTLET STREAM S21     :
+      KODE = 2  NTRIAL =   1  T = 313.1500  P =  180000.      V = 0.999987      Q =  0.00000    
+
+      UOS BLOCK B9       MODEL: COMPR                                             TIME =      0.22
+      OUTLET TEMP =   738.2       OUTLET PRES =  0.2500E+07   INDICATED HP =  0.1131E+06   BRAKE HP =  0.1131E+06
+      ISENTR TEMP =   622.2      CALC ISENTR EFF =  0.7200      ISENTR HP =  0.8143E+05  HP =   931.7    
+
+      UOS BLOCK B13      MODEL: FSPLIT                                            TIME =      0.22
+      NO. TEMP ITER =    5     TEMP =  738.235    
+      KODE = 1  NTRIAL =   2  T = 738.2355  P = 2.500000E+06  V =  1.00000      Q =  0.00000    
+      SPLIT FRACTIONS:  0.90000D+00    0.10000D+00
+
+      CONVERGENCE BLOCK MY-SOLVE  METHOD: BROYDEN                                 TIME =      0.22
+      ITER  22 For Tear Streams: S28
+
+      --FLASH TEAR STREAM S28     
+      NO. TEMP ITER =    5     TEMP =  738.242    
+      KODE = 1  NTRIAL =   2  T = 738.2418  P = 2.500000E+06  V =  1.00000      Q =  0.00000    
+
+  LOOP MY-SOLVE ITER   22:   3 VARS NOT CONVERGED, MAX ERR/TOL      2.9679        TIME =      0.22
+
+      UOS BLOCK B8       MODEL: MIXER                                             TIME =      0.23
+      NO. TEMP ITER =    5     TEMP =  828.702    
+      KODE = 1  NTRIAL =   6  T = 828.7022  P = 2.500000E+06  V =  1.00000      BETA =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B3       MODEL: RSTOIC                                            TIME =      0.23
+      KODE = 2  NTRIAL =   5  T = 493.1500  P = 2.500000E+06  V =  1.00000      BETA =  1.00000      Q = -186648.    
+
+      UOS BLOCK B7       MODEL: FLASH3                                            TIME =      0.23
+      KODE = 2  NTRIAL =   1  T = 313.1500  P =  180000.      V = 0.931294      BETA = 6.122974E-02  Q = -83167.8    
+
+      UOS BLOCK B6       MODEL: MIXER                                             TIME =      0.23
+      KODE = 1  NTRIAL =  17  T = 313.1500  P =  180000.      V =  1.00000      BETA =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B11      MODEL: SEP                                               TIME =      0.23
+      ---FLASH OUTLET STREAM S16     :
+      KODE = 2  NTRIAL =   1  T = 313.1500  P =  180000.      V =  0.00000      Q =  0.00000    
+      ---FLASH OUTLET STREAM S21     :
+      KODE = 2  NTRIAL =   1  T = 313.1500  P =  180000.      V = 0.999987      Q =  0.00000    
+
+      UOS BLOCK B9       MODEL: COMPR                                             TIME =      0.23
+      OUTLET TEMP =   738.2       OUTLET PRES =  0.2500E+07   INDICATED HP =  0.1131E+06   BRAKE HP =  0.1131E+06
+      ISENTR TEMP =   622.2      CALC ISENTR EFF =  0.7200      ISENTR HP =  0.8144E+05  HP =   932.0    
+
+      UOS BLOCK B13      MODEL: FSPLIT                                            TIME =      0.23
+      NO. TEMP ITER =    5     TEMP =  738.241    
+      KODE = 1  NTRIAL =   2  T = 738.2414  P = 2.500000E+06  V =  1.00000      Q =  0.00000    
+      SPLIT FRACTIONS:  0.90000D+00    0.10000D+00
+
+      CONVERGENCE BLOCK MY-SOLVE  METHOD: BROYDEN                                 TIME =      0.23
+      ITER  23 For Tear Streams: S28
+
+  LOOP MY-SOLVE ITER   23:     *** CONVERGED *** , MAX ERR/TOL     0.60668        TIME =      0.23
+
+      UOS BLOCK B5       MODEL: RADFRAC                                           TIME =      0.23
+
+       Convergence iterations:
+         OL   ML   IL     Err/Tol
+          1    1    5      1875.4    
+          2    1    1      1953.3    
+          3    1    5      1864.1    
+          4    1    5      180.21    
+          5    1    4      52.457    
+          6    1    2      11.287    
+          7    1    2      1.7813    
+          8    1    2     0.46059    
+
+      CHECKING PHASE EQUILIBRIUM RESULTS                                          TIME =      0.35
+
+      CHECKING PHASE EQUILIBRIUM RESULTS                                          TIME =      0.35
+
+ Report Writer entered                                                            Time =    176.98
+
+ Results generated                                                                Time =    177.03
+
+RUN SAVED
+
+
+
+ *** SUMMARY OF ERRORS ***
+
+                  PHYSICAL
+                  PROPERTY  SYSTEM  SIMULATION
+ TERMINAL ERRORS      0        0         0
+   SEVERE ERRORS      0        0         0
+          ERRORS      0        0         0
+        WARNINGS      0        0         1

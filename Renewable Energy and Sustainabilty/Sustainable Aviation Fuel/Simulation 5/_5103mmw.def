@@ -1,0 +1,10 @@
+SLAVE:
+INPUT: _5103mmw.inm
+MODNAME: apmain
+RUNID: _5103mmw
+NEW_RUNID: _5103mmw
+OLD_RUNID: _5103mmw
+PDF: _5103mmw.appdf
+USERNAME: ntiam
+XMOD: C:\Program Files\AspenTech\Aspen Plus V14.0\Engine\xeq\apmain
+DBCONN: _5103mmw.ads

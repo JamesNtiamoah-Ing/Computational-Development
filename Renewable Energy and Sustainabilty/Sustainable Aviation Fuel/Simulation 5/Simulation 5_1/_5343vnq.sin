@@ -1,0 +1,282 @@
+ >>ORIGINAL RUN                           SEPTEMBER 21, 2026  
+   2:26:43 P.M.                           MONDAY      
+   INPUT FILE: _5343vnq.inm
+   RUN ID : _5343vnq
+          1    ;
+          2    ;Input file created by Aspen Plus Rel. 40.0 at 14:26:43 Mon Sep 21, 2026
+          3    ;Directory   Runid _29E9
+          4    ;
+          5
+          6
+          7    DYNAMICS
+          8        DYNAMICS RESULTS=ON
+          9
+         10    IN-UNITS MET PRESSURE=bar TEMPERATURE=C DELTA-T=C PDROP=bar  &
+         11            INVERSE-PRES='1/bar' SHORT-LENGTH=mm
+         12
+         13    DEF-STREAMS CONVEN ALL
+         14
+         15    MODEL-OPTION
+         16
+         17    DATABANKS 'APV140 PURE40' / 'APV140 AQUEOUS' / 'APV140 SOLIDS' &
+         18             / 'APV140 INORGANIC' / 'APESV140 AP-EOS' /  &
+         19            'NISTV140 NIST-TRC' / NOASPENPCD
+         20
+         21    PROP-SOURCES 'APV140 PURE40' / 'APV140 AQUEOUS' /  &
+         22            'APV140 SOLIDS' / 'APV140 INORGANIC' / 'APESV140 AP-EOS' &
+         23             / 'NISTV140 NIST-TRC'
+         24
+         25    COMPONENTS
+         26        WATER H2O /
+         27        HYDROGEN H2 /
+         28        OXYGEN O2 /
+         29        CARBO-01 CO2 /
+         30        CARBO-02 CO /
+         31        N-DOD-01 C12H26
+         32
+         33    HENRY-COMPS HC-1 HYDROGEN CARBO-01 OXYGEN CARBO-02
+         34
+         35    SOLVE
+         36        RUN-MODE MODE=SIM
+         37
+         38    FLOWSHEET
+         39        BLOCK MIXER IN=RW FD S7 OUT=8
+         40        BLOCK SEP IN=2 OUT=TP RW
+         41        BLOCK E-CELL IN=8 OUT=2 PI
+         42        BLOCK B1 IN=S1 S22 OUT=S2
+         43        BLOCK B2 IN=S2 OUT=S20 S12 S11
+         44        BLOCK B3 IN=S4 OUT=S5 S9
+         45        BLOCK B5 IN=S8 OUT=S3 S13 S18 S15
+         46        BLOCK B6 IN=S24 OUT=S14
+         47        BLOCK B8 IN=S20 S28 OUT=S4
+         48        BLOCK B9 IN=S21 OUT=S17
+         49        BLOCK B10 IN=5 OUT=S7 S19
+         50        BLOCK B11 IN=S14 OUT=S16 S21
+         51        BLOCK B12 IN=TP OUT=S22 S23
+         52        BLOCK B13 IN=S17 OUT=S28 S29
+         53        BLOCK B7 IN=S5 OUT=S24 S8 1 S6
+         54
+         55    PROPERTIES NRTL
+         56
+         57    ESTIMATE ALL
+         58        NRTL ALL ALL UNIFAC
+         59
+         60    PROP-DATA HENRY-1
+         61        IN-UNITS MET PRESSURE=bar TEMPERATURE=C DELTA-T=C PDROP=bar  &
+         62            INVERSE-PRES='1/bar' SHORT-LENGTH=mm
+         63        PROP-LIST HENRY
+         64        BPVAL HYDROGEN WATER 180.0660745 -6993.510000 -26.31190000  &
+         65            .0150431000 .8500000000 65.85000000 0.0
+         66        BPVAL HYDROGEN N-DOD-01 7.238974535 0.0 0.0 0.0  &
+         67            25.00000000 25.00000000 0.0
+         68        BPVAL CARBO-01 WATER 159.8650745 -8741.550000 -21.66900000  &
+         69            1.10259000E-3 -.1500000000 79.85000000 0.0
+         70        BPVAL CARBO-01 N-DOD-01 .4482745350 -589.3900150 1.035400000  &
+         71            0.0 10.00000000 50.00000000 0.0
+         72        BPVAL OXYGEN WATER 144.4080745 -7775.060000 -18.39740000  &
+         73            -9.4435400E-3 .8500000000 74.85000000 0.0
+         74        BPVAL OXYGEN N-DOD-01 12.50907354 -1850.199951 0.0 0.0  &
+         75            25.00000000 40.00000000 0.0
+         76        BPVAL CARBO-02 WATER 171.7750745 -8296.750000 -23.33720000  &
+         77            0.0 -.1500000000 79.85000000 0.0
+         78        BPVAL CARBO-02 N-DOD-01 6.484474535 0.0 0.0 0.0  &
+         79            25.00000000 25.00000000 0.0
+         80
+         81    PROP-DATA NRTL-1
+         82        IN-UNITS MET PRESSURE=bar TEMPERATURE=C DELTA-T=C PDROP=bar  &
+         83            INVERSE-PRES='1/bar' SHORT-LENGTH=mm
+         84        PROP-LIST NRTL
+         85        BPVAL WATER HYDROGEN 0.0 0.0 .3000000 0.0 0.0 0.0 0  &
+         86            726.850000
+         87        BPVAL HYDROGEN WATER 0.0 0.0 .3000000 0.0 0.0 0.0 0  &
+         88            726.850000
+         89        BPVAL WATER OXYGEN 0.0 0.0 .3000000 0.0 0.0 0.0 0  &
+         90            726.850000
+         91        BPVAL OXYGEN WATER 0.0 0.0 .3000000 0.0 0.0 0.0 0  &
+         92            726.850000
+         93        BPVAL WATER CARBO-01 0.0 0.0 .3000000 0.0 0.0 0.0 0  &
+         94            726.850000
+         95        BPVAL CARBO-01 WATER 0.0 0.0 .3000000 0.0 0.0 0.0 0  &
+         96            726.850000
+         97        BPVAL WATER CARBO-02 0.0 0.0 .3000000 0.0 0.0 0.0 0  &
+         98            726.850000
+         99        BPVAL CARBO-02 WATER 0.0 0.0 .3000000 0.0 0.0 0.0 0  &
+        100            726.850000
+        101        BPVAL WATER N-DOD-01 0.0 4542.63361 .3000000 0.0 0.0 0.0  &
+        102            0 726.850000
+        103        BPVAL N-DOD-01 WATER 0.0 1980.57346 .3000000 0.0 0.0 0.0  &
+        104            0 726.850000
+        105        BPVAL HYDROGEN OXYGEN 0.0 0.0 .3000000 0.0 0.0 0.0 0  &
+        106            726.850000
+        107        BPVAL OXYGEN HYDROGEN 0.0 0.0 .3000000 0.0 0.0 0.0 0  &
+        108            726.850000
+        109        BPVAL HYDROGEN CARBO-01 0.0 0.0 .3000000 0.0 0.0 0.0 0  &
+        110            726.850000
+        111        BPVAL CARBO-01 HYDROGEN 0.0 0.0 .3000000 0.0 0.0 0.0 0  &
+        112            726.850000
+        113        BPVAL HYDROGEN CARBO-02 0.0 0.0 .3000000 0.0 0.0 0.0 0  &
+        114            726.850000
+        115        BPVAL CARBO-02 HYDROGEN 0.0 0.0 .3000000 0.0 0.0 0.0 0  &
+        116            726.850000
+        117        BPVAL HYDROGEN N-DOD-01 0.0 0.0 .3000000 0.0 0.0 0.0 0  &
+        118            726.850000
+        119        BPVAL N-DOD-01 HYDROGEN 0.0 0.0 .3000000 0.0 0.0 0.0 0  &
+        120            726.850000
+        121        BPVAL OXYGEN CARBO-01 0.0 0.0 .3000000 0.0 0.0 0.0 0  &
+        122            726.850000
+        123        BPVAL CARBO-01 OXYGEN 0.0 0.0 .3000000 0.0 0.0 0.0 0  &
+        124            726.850000
+        125        BPVAL OXYGEN CARBO-02 0.0 0.0 .3000000 0.0 0.0 0.0 0  &
+        126            726.850000
+        127        BPVAL CARBO-02 OXYGEN 0.0 0.0 .3000000 0.0 0.0 0.0 0  &
+        128            726.850000
+        129        BPVAL OXYGEN N-DOD-01 0.0 0.0 .3000000 0.0 0.0 0.0 0  &
+        130            726.850000
+        131        BPVAL N-DOD-01 OXYGEN 0.0 0.0 .3000000 0.0 0.0 0.0 0  &
+        132            726.850000
+        133        BPVAL CARBO-01 CARBO-02 0.0 0.0 .3000000 0.0 0.0 0.0 0  &
+        134            726.850000
+        135        BPVAL CARBO-02 CARBO-01 0.0 0.0 .3000000 0.0 0.0 0.0 0  &
+        136            726.850000
+        137        BPVAL CARBO-01 N-DOD-01 0.0 0.0 .3000000 0.0 0.0 0.0 0  &
+        138            726.850000
+        139        BPVAL N-DOD-01 CARBO-01 0.0 0.0 .3000000 0.0 0.0 0.0 0  &
+        140            726.850000
+        141        BPVAL CARBO-02 N-DOD-01 0.0 0.0 .3000000 0.0 0.0 0.0 0  &
+        142            726.850000
+        143        BPVAL N-DOD-01 CARBO-02 0.0 0.0 .3000000 0.0 0.0 0.0 0  &
+        144            726.850000
+        145
+        146    STREAM 5
+        147        SUBSTREAM MIXED TEMP=40 PRES=1.8
+        148        MOLE-FLOW WATER 2.13398833 / HYDROGEN 0.00020632151 /  &
+        149            CARBO-01 0.00758473215 / CARBO-02 5.0567686E-05 /  &
+        150            N-DOD-01 1.0446563E-05
+        151
+        152    STREAM FD
+        153        SUBSTREAM MIXED TEMP=70.00000000 PRES=40.00000000  &
+        154            MASS-FLOW=100.
+        155        MASS-FRAC WATER 1.
+        156
+        157    STREAM S1
+        158        SUBSTREAM MIXED TEMP=70.00000000 PRES=40.00000000  &
+        159            MASS-FLOW=100.
+        160        MASS-FRAC CARBO-01 1.
+        161
+        162    STREAM S4
+        163        SUBSTREAM MIXED TEMP=800.0000000 PRES=25.00000000
+        164
+        165    STREAM S7
+        166        SUBSTREAM MIXED TEMP=40.00000000 PRES=1.500000000
+        167        MOLE-FLOW WATER 3.143520000
+        168
+        169    DEF-STREAMS HEAT PI
+        170
+        171    DEF-STREAMS HEAT S6
+        172
+        173    DEF-STREAMS HEAT S9
+        174
+        175    DEF-STREAMS HEAT S11
+        176
+        177    DEF-STREAMS HEAT S15
+        178
+        179    DEF-STREAMS HEAT S18
+        180
+        181    DEF-STREAMS HEAT S19
+        182
+        183    BLOCK B1 MIXER
+        184        PARAM
+        185
+        186    BLOCK B6 MIXER
+        187        PARAM NPHASE=3
+        188        BLOCK-OPTION FREE-WATER=NO
+        189
+        190    BLOCK B8 MIXER
+        191        PARAM PRES=25.00000000 NPHASE=3
+        192        BLOCK-OPTION FREE-WATER=NO
+        193
+        194    BLOCK MIXER MIXER
+        195        PARAM
+        196
+        197    BLOCK B13 FSPLIT
+        198        FRAC S29 0.1
+        199
+        200    BLOCK B11 SEP
+        201        PARAM NPHASE=3
+        202        FRAC STREAM=S16 SUBSTREAM=MIXED COMPS=WATER HYDROGEN  &
+        203            OXYGEN CARBO-01 CARBO-02 N-DOD-01 FRACS=1. 0. 0. 0.  &
+        204            0. 0.
+        205        BLOCK-OPTION FREE-WATER=NO
+        206
+        207    BLOCK B12 SEP
+        208        PARAM
+        209        FRAC STREAM=S22 SUBSTREAM=MIXED COMPS=HYDROGEN OXYGEN  &
+        210            FRACS=1. 0.
+        211
+        212    BLOCK B10 HEATER
+        213        PARAM TEMP=70.00000000 PRES=40.00000000 NPHASE=3  &
+        214            DPPARMOPT=NO
+        215        BLOCK-OPTION FREE-WATER=NO
+        216
+        217    BLOCK SEP FLASH2
+        218        PARAM PRES=40.00000000 DUTY=0.0
+        219
+        220    BLOCK B7 FLASH3
+        221        PARAM TEMP=40. PRES=1.8 L2-COMP=WATER
+        222
+        223    BLOCK B5 RADFRAC
+        224        PARAM NSTAGE=30 ALGORITHM=NONIDEAL INIT-OPTION=STANDARD  &
+        225            MAXOL=100 MAXIL=50 LL-METH=EQ-SOLVE MAXIP=50 NPHASE=3  &
+        226            DAMPING=NONE
+        227        COL-CONFIG CONDENSER=PARTIAL-V
+        228        FEEDS S8 4
+        229        PRODUCTS S13 30 L / S3 1 V
+        230        PRODUCTS S15 30 / S18 1
+        231        P-SPEC 1 1.000000000
+        232        COL-SPECS MASS-D=0.001 MASS-RR=1.
+        233        L2-COMPS WATER N-DOD-01
+        234        L2-STAGES 2 30
+        235        BLOCK-OPTION FREE-WATER=NO
+        236
+        237    BLOCK B3 RSTOIC
+        238        PARAM TEMP=220.0000000 PRES=25.00000000 NPHASE=3
+        239        STOIC 1 MIXED CARBO-02 -12. / HYDROGEN -25. / N-DOD-01  &
+        240            1. / WATER 12.
+        241        CONV 1 MIXED CARBO-02 0.8
+        242        BLOCK-OPTION FREE-WATER=NO
+        243
+        244    BLOCK E-CELL RSTOIC
+        245        PARAM TEMP=70.00000000 PRES=40.00000000
+        246        STOIC 1 MIXED WATER -2. / HYDROGEN 2. / OXYGEN 1.
+        247        CONV 1 MIXED WATER 0.5
+        248
+        249    BLOCK B2 REQUIL
+        250        PARAM NREAC=1 TEMP=800.0000000 PRES=25.00000000 NPHASE=2
+        251        STOIC 2 CARBO-01 -1. * / HYDROGEN -1. * / CARBO-02 1.  &
+        252            * / WATER 1. *
+        253        TAPP-SPEC 2 0.0
+        254
+        255    BLOCK B9 COMPR
+        256        PARAM TYPE=ISENTROPIC PRES=25.00000000 NPHASE=3 SB-MAXIT=30  &
+        257            SB-TOL=0.0001
+        258        BLOCK-OPTION FREE-WATER=NO
+        259
+        260    EO-CONV-OPTI
+        261
+        262    CONV-OPTIONS
+        263        PARAM TEAR-METHOD=BROYDEN TOL=1E-05
+        264
+        265    CONVERGENCE MY-SOLVE BROYDEN
+        266        TEAR S28
+        267
+        268    STREAM-REPOR MOLEFLOW
+        269
+        270    PROPERTY-REP PCES
+        271    ;
+        272    ;
+        273    ;
+        274    ;
+        275    ;
+
+   SIMULATION STARTED     MODULE USED: apmain  
+   LOCATED IN:C:\Program Files\AspenTech\Aspen Plus V14.0\Engine\\xeq

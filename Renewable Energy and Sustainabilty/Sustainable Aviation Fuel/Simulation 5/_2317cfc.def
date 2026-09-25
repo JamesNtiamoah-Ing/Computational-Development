@@ -1,0 +1,10 @@
+SLAVE:
+INPUT: _2317cfc.inm
+MODNAME: apmain
+RUNID: _2317cfc
+NEW_RUNID: _2317cfc
+OLD_RUNID: _2317cfc
+PDF: _2317cfc.appdf
+USERNAME: ntiam
+XMOD: C:\Program Files\AspenTech\Aspen Plus V14.0\Engine\xeq\apmain
+DBCONN: _2317cfc.ads

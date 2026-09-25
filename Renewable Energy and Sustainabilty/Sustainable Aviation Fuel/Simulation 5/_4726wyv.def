@@ -1,0 +1,10 @@
+SLAVE:
+INPUT: _4726wyv.inm
+MODNAME: apmain
+RUNID: _4726wyv
+NEW_RUNID: _4726wyv
+OLD_RUNID: _4726wyv
+PDF: _4726wyv.appdf
+USERNAME: ntiam
+XMOD: C:\Program Files\AspenTech\Aspen Plus V14.0\Engine\xeq\apmain
+DBCONN: _4726wyv.ads

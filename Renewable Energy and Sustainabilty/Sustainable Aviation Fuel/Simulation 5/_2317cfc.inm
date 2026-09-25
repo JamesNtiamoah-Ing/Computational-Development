@@ -1,0 +1,28 @@
+;
+;Input file created by Aspen Plus Rel. 40.0 at 22:19:47 Sun Sep 20, 2026
+;Directory C:\Users\ntiam\Computational-Development\GREEN HYDROGEN\Simulation 5  Runid _3205
+;
+
+
+DYNAMICS
+    DYNAMICS RESULTS=ON
+
+STREAM S7 
+    SUBSTREAM MIXED TEMP=70. PRES=40. 
+
+DEF-STREAMS HEAT PI
+
+DEF-STREAMS HEAT S9
+
+DEF-STREAMS HEAT S10
+
+DEF-STREAMS HEAT S11
+
+DEF-STREAMS HEAT S15
+
+DEF-STREAMS HEAT S18
+;
+;
+;
+;
+;

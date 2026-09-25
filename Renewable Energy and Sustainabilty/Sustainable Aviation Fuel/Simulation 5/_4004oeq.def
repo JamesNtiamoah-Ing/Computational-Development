@@ -1,0 +1,10 @@
+SLAVE:
+INPUT: _4004oeq.inm
+MODNAME: apmain
+RUNID: _4004oeq
+NEW_RUNID: _4004oeq
+OLD_RUNID: _4004oeq
+PDF: _4004oeq.appdf
+USERNAME: ntiam
+XMOD: C:\Program Files\AspenTech\Aspen Plus V14.0\Engine\xeq\apmain
+SPONLY:

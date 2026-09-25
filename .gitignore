@@ -1,0 +1,14 @@
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+*-checkpoint.ipynb
+
+# Aspen Plus temporary & dump files
+*.dmp
+*.bkp.backup
+*.bk$
+*_backup.*
+~$*
+
+# Operating system junk
+Thumbs.db
+Desktop.ini
