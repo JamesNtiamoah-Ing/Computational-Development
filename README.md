@@ -13,7 +13,7 @@ This repository demonstrates the application of thermodynamic principles, numeri
   Steady-state flowsheet simulations, material and energy balances, and rigorous thermodynamic property modeling (e.g., NRTL, phase equilibria, VLLE) executed in Aspen Plus.
 
 * **[Python Engineering Solvers](./Python%20Engineering%20Solvers)**  
-  Numerical computing scripts, multivariable convergence solvers, flash calculations (Rachford-Rice), and unit operation algorithms developed using Python (`NumPy`, `SciPy`, `Matplotlib`) and MATLAB.
+  Numerical computing scripts, multivariable convergence solvers, flash calculations (Rachford-Rice), and unit operation algorithms developed using Python (NumPy, SciPy, Matplotlib) and MATLAB.
 
 * **[Renewable Energy and Sustainability](./Renewable%20Energy%20and%20Sustainability)**  
   Techno-Economic Assessments (TEA), pinch analysis, and process models focusing on clean energy transitions, including a rigorous Power-to-Liquid (PtL) Sustainable Aviation Fuel (SAF) pilot simulation.
