@@ -9,16 +9,16 @@ This repository demonstrates the application of thermodynamic principles, numeri
 
 📁 Repository Structure
 
-* **[`Aspen Process Models/`](./Aspen%20Process%20Models)**  
+* **[Aspen Process Models](./Aspen%20Process%20Models)**  
   Steady-state flowsheet simulations, material and energy balances, and rigorous thermodynamic property modeling (e.g., NRTL, phase equilibria, VLLE) executed in Aspen Plus.
 
-* **[`Python Engineering Solvers/`](./Python%20Engineering%20Solvers)**  
+* **[Python Engineering Solvers](./Python%20Engineering%20Solvers)**  
   Numerical computing scripts, multivariable convergence solvers, flash calculations (Rachford-Rice), and unit operation algorithms developed using Python (`NumPy`, `SciPy`, `Matplotlib`) and MATLAB.
 
-* **[`Renewable Energy and Sustainability/`](./Renewable%20Energy%20and%20Sustainability)**  
+* **[Renewable Energy and Sustainability](./Renewable%20Energy%20and%20Sustainability)**  
   Techno-Economic Assessments (TEA), pinch analysis, and process models focusing on clean energy transitions, including a rigorous Power-to-Liquid (PtL) Sustainable Aviation Fuel (SAF) pilot simulation.
 
-* **[`AutoCAD Design Drafts/`](./AutoCAD%20Design%20Drafts)**  
+* **[AutoCAD Design Drafts](./AutoCAD%20Design%20Drafts)**  
   Technical engineering drawings, including Piping & Instrumentation Diagrams (P&IDs) and process layout designs.
 
 ---
